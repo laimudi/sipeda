@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
 
-Route::get('/', function () {
-    return view('layouts.template.dashboar');
+Route::get('/admin', function () {
+    return view('admin.dashboard');
 });

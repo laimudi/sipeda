@@ -1,93 +1,91 @@
-@include('layouts.LandingPage.style')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGIN</title>
+
+    @include('layouts.template.style')
+</head>
+<body>
 
 
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-  
-      <h1 class="logo"><a href="/home"><img src="{{ asset('assets/img/kmi-balut.png') }}" alt=""></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-  
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a class="nav-link scrollto" href="#sejarah">Sejarah</a></li>
-              <li><a href="#">Visi dan Misi</a></li>
-              <li class="dropdown"><a href="#"><span>Struktur</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Struktur Organisasi</a></li>
-                  <li><a href="#">Struktur Asrama</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Pengumuman</a></li>
-              <li><a href="#">Agenda</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#galeri">Galeri</a></li>
-          <li><a class="nav-link scrollto " href="#berita">Berita</a></li>
-          <li><a class="getstarted" href="/login">Login</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-  
-    </div>
-</header><!-- End Header -->
+  <main>
+    <div class="container">
 
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-<div class="container" style="margin-top: 150px;">
-  <div class="row justify-content-center">
-      <div class="d-grid gap-2 col-6 mx-auto">
+              <div class="d-flex justify-content-center py-4">
+                <a href="/" class="logo d-flex align-items-center w-auto">
+                  <img src="template/assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">NiceAdmin</span>
+                </a>
+              </div><!-- End Logo -->
 
-          <div class="card shadow">
-              <div class="card-header text-center">
-                  <img src="{{ asset('assets/img/kmib.png') }}" style="width: 90px;">
-                  <h5>SIPEDA</h5>
-                  <h5>KMI-BALUT</h5>
-              </div>
-              <form action="cekLogin.php" method="post">
-                  <div class="card-body">
-                      <label for="username" class="form-label">Username</label>
-                      <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon3">
-                            <i class="bi bi-person-lock"></i>
-                          </span>
-                          <input type="text" class="form-control" id="username" name="username" required placeholder="Masukkan Username" aria-describedby="basic-addon3">
-                      </div>
-                      <label for="password" class="form-label">Password</label>
-                      <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon3">
-                            <i class="bi bi-file-lock"></i>
-                          </span>
-                          <input type="password" class="form-control" id="password" name="password" required placeholder="Masukkan Password" aria-describedby="basic-addon3">
-                      </div>
-                      <div class="d-grid gap-2 col-12 mx-auto">
-                          <button type="submit" class="btn btn-primary" name="login">Login</button>
-                      </div>
+              <div class="card mb-3">
 
-                      <div class="d-grid gap-2 col-12 mx-auto text-center">
-                        <p>Belum Punya Akun</p>
-                        <a href="#">Buat Akun</a>
-                      </div>
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <p class="text-center small">Enter your username & password to login</p>
                   </div>
-              </form>
+
+                  <form class="row g-3 needs-validation" novalidate>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+
+            </div>
           </div>
+        </div>
 
-      </div>
-  </div>
+      </section>
 
-</div>
+    </div>
+  </main><!-- End #main -->
 
-  
-
-
-
-
-@include('layouts.LandingPage.script')
+    
+</body>
+</html>
