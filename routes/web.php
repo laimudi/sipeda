@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
 
 
 // Admin
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
-
 Route::get('/admin', [App\Http\Controllers\DashboardController::class, 'index']);
-
 Route::resource('/profil', ProfilController::class,);
+Route::resource('/galeri', GaleriController::class);

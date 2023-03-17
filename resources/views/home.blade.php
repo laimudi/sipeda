@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'HOME')
+@section('title', 'Home')
 @section('content')
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center justify-content-center">
@@ -234,59 +234,3 @@
   </section><!-- End Pricing Section -->
 
 @endsection
-
-
-<!-- Modal Login-->
-<div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-3" id="staticBackdropLabel">LOGIN</p></h1>
-      </div>
-      <div class="modal-body">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">@</span>
-          <input type="text" class="form-control" placeholder="email" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"><i class="bi bi-file-lock"></i></span>
-          <input type="text" class="form-control" placeholder="password" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-        <button type="button" class="btn btn-primary">Login</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{{-- Modal Register --}}
-<div class="modal fade" id="register" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-3" id="staticBackdropLabel">Register</p></h1>
-      </div>
-      <div class="modal-body">
-          <div class="mb-3">
-            <label for="nama">Nama</label>
-            <input type="text" name="nama" class="form-control" id="nama" required>
-          </div>
-          <div class="mb-3">
-            <label for="nama">Email</label>
-            <input type="text" name="nama" class="form-control" id="nama" required>
-          </div>
-          <div class="mb-3">
-            <label for="nama">Password</label>
-            <input type="password" name="nama" class="form-control" id="nama" required>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
-      </div>
-    </div>
-  </div>
-</div>
