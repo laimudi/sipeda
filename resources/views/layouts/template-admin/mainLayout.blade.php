@@ -6,22 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
 
-    @include('layouts.LandingPage.style')
+    @include('layouts.template-admin.style')
 </head>
 <body>
 
-    @include('layouts.LandingPage.header')
+    @include('layouts.template-admin.header')
 
-    <main id="main">
+    @include('layouts.template-admin.sidebar')
 
+    <main id="main" class="main">
         @yield('content')
-        
     </main>
-  
-    @include('layouts.LandingPage.footer')
-      
-  
-    @include('layouts.LandingPage.script')
+
+    @include('layouts.template-admin.footer')
+
+    @include('layouts.template-admin.script')
     
 </body>
 </html>

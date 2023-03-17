@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
 
-    @include('layouts.template.style')
+    @include('layouts.template-admin.style')
 </head>
 <body>
 

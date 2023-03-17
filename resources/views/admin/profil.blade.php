@@ -1,4 +1,4 @@
-@extends('layouts.template.mainLayout')
+@extends('layouts.template-admin.mainLayout')
 
 @section('title', 'Profil')
 

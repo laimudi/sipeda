@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.landingpage-pengguna.app')
 
 @section('title', 'Home')
 @section('content')
@@ -16,7 +16,7 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>About</h2>
+        <h2>Sekilas KMI-BALUT</h2>
       </div>
 
       <div class="row">
