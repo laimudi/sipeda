@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profils', function (Blueprint $table) {
+        Schema::create('galeris', function (Blueprint $table) {
             $table->id();
+            $table->string('judul_gmbr', 100)->required();
+            $table->string('gambar', 100)->required();
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profils');
+        Schema::dropIfExists('galeris');
     }
 };

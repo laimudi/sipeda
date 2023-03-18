@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 
 class GaleriController extends Controller
@@ -12,7 +13,8 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        return view('admin.galeri');
+        $galeri = Galeri::all();
+        return view('admin.galeri.galeri', compact('galeri'));
     }
 
     /**
@@ -20,7 +22,7 @@ class GaleriController extends Controller
      */
     public function create()
     {
-        //
+        return view('modal_tambah');
     }
 
     /**
@@ -28,7 +30,18 @@ class GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newName = '';
+        if ($request->file('gambar')) {
+            $extension = $request->file('gambar')->getClientOriginalExtension();
+            $newName = $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('gambar')->storeAs('galeri-gambar', $newName);
+        }
+
+        $request['image'] = $newName;
+        Galeri::create([
+            'judul_gmbr' => $request['judul_gmbar'],
+            'gambar' => $request['gambar']
+        ]);
     }
 
     /**
