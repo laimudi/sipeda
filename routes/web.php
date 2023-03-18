@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\ProfilController;
+use App\Http\Controllers\Admin\BeritaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,4 @@ Route::get('/strukturasrama', [App\Http\Controllers\StrukturAsramaController::cl
 Route::get('/admin', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 Route::resource('/profil', ProfilController::class,);
 Route::resource('/galeri', GaleriController::class);
+Route::resource('/berita', BeritaController::class);

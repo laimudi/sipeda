@@ -21,3 +21,10 @@
       <span>Galeri</span>
     </a>
   </li>
+
+  <li class="nav-item">
+    <a href="{{ route('berita.index') }}" class="nav-link {{ Request::is('berita') ? 'collapsed' : '' }}">
+      <i class="ri-file-paper-2-line"></i>
+      <span>Berita</span>
+    </a>
+  </li>

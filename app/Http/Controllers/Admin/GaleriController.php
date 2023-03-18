@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Galeri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
@@ -30,18 +32,20 @@ class GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        $newName = '';
-        if ($request->file('gambar')) {
-            $extension = $request->file('gambar')->getClientOriginalExtension();
-            $newName = $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('gambar')->storeAs('galeri-gambar', $newName);
+        $gambar = $request->file('gambar');
+        $gambar->store('galeri-gambar', 'public');
+
+        Galeri::create([
+            'judul_gmbr' => $request->judul_gmbr,
+            'gambar' => $gambar->hashName(),
+        ]);
+
+        if ($gambar) {
+            Session::flash('tambah', 'success');
+            Session::flash('message', 'Data Berhasil Ditambah');
         }
 
-        $request['image'] = $newName;
-        Galeri::create([
-            'judul_gmbr' => $request['judul_gmbar'],
-            'gambar' => $request['gambar']
-        ]);
+        return redirect()->back();
     }
 
     /**
@@ -55,24 +59,55 @@ class GaleriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        // $galeri = Galeri::find($id);
+        // return view('admin.galeri.modal_edit', compact('galeri'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+
+        $galeri = Galeri::findOrFail($id);
+
+        if ($request->file('gambar') == "") {
+            $galeri->update([
+                'judul_gmbr' => $request->judul_gmbr
+            ]);
+        } else {
+            // hapus gambar
+            $file = public_path('storage/galeri-gambar') . $galeri->gambar;
+            if (file_exists($file)) {
+                @unlink($file);
+            }
+            Storage::delete($file);
+
+            // new
+            $gambar = $request->file('gambar');
+            $gambar->storeAs('public/galeri-gambar', $gambar->hashName());
+
+            $galeri->update([
+                'judul_gmbr' => $request->judul_gmbr,
+                'gambar' => $gambar->hashName()
+            ]);
+        }
+        if ($galeri) {
+            Session::flash('edit', 'success');
+            Session::flash('message', 'Data Berhasil Diedit');
+        }
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Galeri::destroy($id);
+        return redirect()->route('galeri.index');
     }
 }
