@@ -15,9 +15,5 @@
 <link href="{{ asset('template/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
-{{-- Table --}}
-<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet"/>
-
-
 <!-- Template Main CSS File -->
 <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet">
