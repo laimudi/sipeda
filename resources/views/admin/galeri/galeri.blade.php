@@ -43,6 +43,7 @@
       </div>
       <div class="card-body shadow">
         <h5 class="card-title">Data Galeri</h5>
+        <div class="table-responsive">
           <table class="table table-striped datatable">
             <thead>
               <tr>
@@ -77,8 +78,9 @@
             @endforeach
             </tbody>
           </table>
+        </div>
       </div>
     </div>
-  </section>
+</section>
     
 @endsection

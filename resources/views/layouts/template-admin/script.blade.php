@@ -8,8 +8,16 @@
 <script src="{{ asset('template/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
 
-{{-- Table --}}
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
 <!-- Template Main JS File -->
 <script src="{{ asset('template/assets/js/main.js') }}"></script>
+
+{{-- Table --}}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            scrollX: true,
+        });
+    });
+</script>
