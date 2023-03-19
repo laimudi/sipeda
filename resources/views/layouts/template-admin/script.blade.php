@@ -12,9 +12,9 @@
 <script src="{{ asset('template/assets/js/main.js') }}"></script>
 
 {{-- Table --}}
-<script src="{{ asset('template/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+{{-- <script src="{{ asset('template/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
 <script>
     //Simple Datatable
     let tabel_berita = document.querySelector('#tabel_berita');
     let dataTable = new simpleDatatables.DataTable(tabel_berita);
-</script>
+</script> --}}

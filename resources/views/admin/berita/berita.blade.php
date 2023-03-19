@@ -43,7 +43,7 @@
         </div>
         <div class="card-body shadow">
             <h5 class="card-title">Data Berita</h5>
-            <table id="tabel_berita" class="table">
+            <table class="table table-striped" id="tabel_berita">
                 <thead>
                     <tr>
                         <th>No</th>
