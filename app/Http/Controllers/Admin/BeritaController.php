@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -52,7 +53,7 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -60,7 +61,7 @@ class BeritaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
     }
@@ -68,16 +69,48 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $berita = Berita::findOrFail($id);
+        if ($request->file('gambar') == "") {
+            $berita->update([
+                'judul_berita' => $request->judul_berita,
+                'tanggal' => $request->tanggal,
+                'isi_berita' => $request->isi_berita
+            ]);
+        } else {
+            // hapus gambar
+            $file = public_path('storage/berita-gambar') . $berita->gambar;
+            if (file_exists($file)) {
+                @unlink($file);
+            }
+            Storage::delete($file);
+
+            //new
+            $berita = $request->file('gambar');
+            $berita->storeAs('public/berita-gambar', $berita->hashName());
+
+            $berita->update([
+                'judul_berita' => $request->judul_berita,
+                'gambar' => $request->gambar,
+                'tanggal' => $request->tanggal,
+                'isi_berita' => $request->isi_berita
+            ]);
+        }
+        if ($berita) {
+            Session::flash('edit', 'success');
+            Session::flash('message', 'Data Berhasil Diedit');
+        }
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Berita::destroy($id);
+        return redirect()->route('berita.index');
     }
 }

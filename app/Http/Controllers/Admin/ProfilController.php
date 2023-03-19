@@ -12,7 +12,7 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        return view('admin.profil');
+        return view('admin.profil.profil');
     }
 
     /**

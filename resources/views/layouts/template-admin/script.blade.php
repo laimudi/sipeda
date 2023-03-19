@@ -8,5 +8,8 @@
 <script src="{{ asset('template/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('template/assets/vendor/php-email-form/validate.js') }}"></script>
 
+{{-- Table --}}
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
 <!-- Template Main JS File -->
 <script src="{{ asset('template/assets/js/main.js') }}"></script>

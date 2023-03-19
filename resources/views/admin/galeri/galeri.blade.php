@@ -68,7 +68,7 @@
                   @csrf
                   @method('DELETE')
                   <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">
-                    <i class="ri-edit-box-line"></i>
+                    <i class="ri-delete-bin-6-line"></i>
                   </button>
                   </form>
               </td>
