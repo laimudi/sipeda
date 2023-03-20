@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProfilController extends Controller
 {
@@ -12,7 +14,8 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        return view('admin.profil.profil');
+        $profil = Profil::all();
+        return view('admin.profil.profil', compact('profil'));
     }
 
     /**
@@ -28,7 +31,31 @@ class ProfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasi = Validator::make($request->all(), [
+            'struktur_org' => 'required|mimes:pdf',
+            'struktur_asm' => 'required|mimes:pdf'
+        ]);
+
+        if ($validasi->fails()) {
+            return redirect()->back();
+        }
+
+        $document = $request->struktur_org;
+        $struktur_org = time() . '.' . $document->getClientOriginalExtension();
+        $request->struktur_org->move(public_path('storage/profil-pdf/'), $struktur_org);
+
+        $documents = $request->struktur_asm;
+        $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
+        $request->struktur_asm->move(public_path('storage/profil-pdf/'), $struktur_asm);
+
+        $profil = Profil::create([
+            'sejarah' => $request->sejarah,
+            'tujuan' => $request->tujuan,
+            'tentang' => $request->tentang,
+            'struktur_org' => $struktur_org,
+            'struktur_asm' => $struktur_asm
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -50,9 +77,10 @@ class ProfilController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $profil = Profil::findOrFail($id);
+        $profil->update($request->all());
     }
 
     /**

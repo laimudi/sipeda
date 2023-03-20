@@ -44,7 +44,7 @@
       <div class="card-body shadow">
         <h5 class="card-title">Data Galeri</h5>
         <div class="table-responsive">
-          <table class="table table-striped datatable">
+          <table id="example" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>No</th>

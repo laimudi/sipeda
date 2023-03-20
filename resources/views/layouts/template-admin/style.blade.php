@@ -15,5 +15,10 @@
 <link href="{{ asset('template/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 <link href="{{ asset('template/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" /> --}}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
 <!-- Template Main CSS File -->
 <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet">
