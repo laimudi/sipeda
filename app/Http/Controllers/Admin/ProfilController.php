@@ -80,6 +80,7 @@ class ProfilController extends Controller
     public function update(Request $request, $id)
     {
         $profil = Profil::findOrFail($id);
+        dd($request->all());
         $profil->update($request->all());
     }
 
