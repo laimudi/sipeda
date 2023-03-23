@@ -44,11 +44,11 @@ class ProfilController extends Controller
 
         $document = $request->struktur_org;
         $struktur_org = time() . '.' . $document->getClientOriginalExtension();
-        $request->struktur_org->move(public_path('storage/profil-pdf/'), $struktur_org);
+        $request->struktur_org->move(public_path('storage/profil-pdf/pdf-org/'), $struktur_org);
 
         $documents = $request->struktur_asm;
         $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
-        $request->struktur_asm->move(public_path('storage/profil-pdf/'), $struktur_asm);
+        $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm/'), $struktur_asm);
 
         $profil = Profil::create([
             'sejarah' => $request->sejarah,
@@ -97,17 +97,17 @@ class ProfilController extends Controller
 
 
             // Hapus FIle Lama
-            $file = public_path('storage/profil-pdf/') . $profil->struktur_org;
-            if (file_exists($file)) {
-                @unlink($file);
+            $fileOrg = public_path('storage/profil-pdf/pdf-org') . $profil->struktur_org;
+            if (file_exists($fileOrg)) {
+                @unlink($fileOrg);
             }
-            Storage::delete($file);
+            Storage::delete($fileOrg);
 
             // Ganti Dengan Data Baru
 
             $document = $request->struktur_org;
             $struktur_org = time() . '.' . $document->getClientOriginalExtension();
-            $request->document->move(public_path('storage/profil-pdf/'), $struktur_org);
+            $request->struktur_org->move(public_path('storage/profil-pdf/pdf-org'), $struktur_org);
 
             $profil->update([
                 'sejarah' => $request->sejarah,
@@ -120,17 +120,17 @@ class ProfilController extends Controller
         // ini logika kalau yang diupdate hanya file asm
         elseif ($request->file('struktur_asm') != null) {
             // Hapus FIle Lama
-            $file = public_path('storage/profil-pdf/') . $profil->struktur_asm;
-            if (file_exists($file)) {
-                @unlink($file);
+            $fileAsm = public_path('storage/profil-pdf/pdf-asm') . $profil->struktur_asm;
+            if (file_exists($fileAsm)) {
+                @unlink($fileAsm);
             }
-            Storage::delete($file);
+            Storage::delete($fileAsm);
 
             // Ganti Dengan Data Baru
 
-            $document = $request->struktur_asm;
-            $struktur_asm = time() . '.' . $document->getClientOriginalExtension();
-            $request->document->move(public_path('storage/profil-pdf/'), $struktur_asm);
+            $documents = $request->struktur_asm;
+            $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
+            $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm'), $struktur_asm);
 
             $profil->update([
                 'sejarah' => $request->sejarah,
@@ -139,6 +139,25 @@ class ProfilController extends Controller
                 'struktur_asm' => $struktur_asm,
             ]);
         }
+        // else {
+
+        //     // new pdf
+        //     $document = $request->struktur_org;
+        //     $struktur_org = time() . '.' . $document->getClientOriginalExtension();
+        //     $request->struktur_org->move(public_path('storage/profil-pdf/pdf-org'), $struktur_org);
+
+        //     $documents = $request->struktur_asm;
+        //     $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
+        //     $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm'), $struktur_asm);
+
+        //     $profil->update([
+        //         'sejarah' => $request->sejarah,
+        //         'tujuan' => $request->tujuan,
+        //         'tentang' => $request->tentang,
+        //         'struktur_org' => $request->srtruktur_org,
+        //         'struktur_asm' => $request->struktur_asm
+        //     ]);
+        // }
 
 
         // if (($request->file('struktur_org') == null) || ($request->file('struktur_org') == null)) {

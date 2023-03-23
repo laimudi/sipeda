@@ -75,10 +75,10 @@
             {!! $profil->tentang !!}
           </div>
           <div class="tab-pane fade" id="struktur_org-justified" role="tabpanel" aria-labelledby="struktur_org-tab">
-            <iframe src="{{ asset('/storage/profil-pdf'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
+            <iframe src="{{ asset('storage/profil-pdf/pdf-org'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
           </div>
           <div class="tab-pane fade" id="struktur_asm-justified" role="tabpanel" aria-labelledby="struktur_asm-tab">
-            {{ asset('public/profil-pdf'.$profil->struktur_asm) }}
+            <iframe src="{{ asset('public/profil-pdf/pdf-asm'.$profil->struktur_asm) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
           </div>
         </div>
         @endif
