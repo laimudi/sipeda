@@ -21,22 +21,24 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      @if ($profil->isEmpty())
+                      @if ($profil == null)
                       <button type="button" class="btn btn-outline-primary"
                       data-bs-toggle="modal" data-bs-target="#tambahProfil">
                       Tambah Profil
                       </button>
+                      @include('admin.profil.modal_tambah')
                       @else
                       <button type="button" class="btn btn-outline-warning"
                             data-bs-toggle="modal" data-bs-target="#editProfil">
                             Edit Profil
-                        </button>
-                        @endif
-                      </li>
+                      </button>
+                      @include('admin.profil.modal_edit')
+                      @endif
+                    </li>
                 </ol>
             </nav>
-            @include('admin.profil.modal_tambah')
-            @include('admin.profil.modal_edit')
+            
+            
         </div>
       </div>
       <div class="card-body shadow">
@@ -58,25 +60,30 @@
               <button class="nav-link w-100" id="struktur_asm-tab" data-bs-toggle="tab" data-bs-target="#struktur_asm-justified" type="button" role="tab" aria-controls="struktur_asm" aria-selected="false">Struktur Asrama</button>
             </li>
         </ul>
-        @foreach ($profil as $data)
+        {{-- @foreach ($profil as $data) --}}
+        @if ($profil != null)
+            
+        
         <div class="tab-content pt-4" id="myTabjustifiedContent">
           <div class="tab-pane fade show active" id="sejarah-justified" role="tabpanel" aria-labelledby="sejarah-tab">
-            {!! $data->sejarah !!}
+            {!! $profil->sejarah !!}
           </div>
           <div class="tab-pane fade" id="tujuan-justified" role="tabpanel" aria-labelledby="tujuan-tab">
-            {!! $data->tujuan !!}
+            {!! $profil->tujuan !!}
           </div>
           <div class="tab-pane fade" id="tentang-justified" role="tabpanel" aria-labelledby="tentang-tab">
-            {!! $data->tentang !!}
+            {!! $profil->tentang !!}
           </div>
           <div class="tab-pane fade" id="struktur_org-justified" role="tabpanel" aria-labelledby="struktur_org-tab">
-            <iframe src="{{ asset('/storage/profil-pdf'.$data->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
+            <iframe src="{{ asset('/storage/profil-pdf'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
           </div>
           <div class="tab-pane fade" id="struktur_asm-justified" role="tabpanel" aria-labelledby="struktur_asm-tab">
-            {{ asset('public/profil-pdf'.$data->struktur_asm) }}
+            {{ asset('public/profil-pdf'.$profil->struktur_asm) }}
           </div>
         </div>
-        @endforeach
+        @endif
+     
+        {{-- @endforeach --}}
       </div>
     </div>
 </section>

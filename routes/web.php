@@ -35,6 +35,6 @@ Route::get('/strukturasrama', [App\Http\Controllers\StrukturAsramaController::cl
 
 // Admin
 Route::get('/admin', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
-Route::resource('/profil', ProfilController::class,);
+Route::resource('/profil', ProfilController::class);
 Route::resource('/galeri', GaleriController::class);
 Route::resource('/berita', BeritaController::class);
