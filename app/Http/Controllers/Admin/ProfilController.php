@@ -139,46 +139,6 @@ class ProfilController extends Controller
                 'struktur_asm' => $struktur_asm,
             ]);
         }
-        // else {
-
-        //     // new pdf
-        //     $document = $request->struktur_org;
-        //     $struktur_org = time() . '.' . $document->getClientOriginalExtension();
-        //     $request->struktur_org->move(public_path('storage/profil-pdf/pdf-org'), $struktur_org);
-
-        //     $documents = $request->struktur_asm;
-        //     $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
-        //     $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm'), $struktur_asm);
-
-        //     $profil->update([
-        //         'sejarah' => $request->sejarah,
-        //         'tujuan' => $request->tujuan,
-        //         'tentang' => $request->tentang,
-        //         'struktur_org' => $request->srtruktur_org,
-        //         'struktur_asm' => $request->struktur_asm
-        //     ]);
-        // }
-
-
-        // if (($request->file('struktur_org') == null) || ($request->file('struktur_org') == null)) {
-        //     $profil->update([
-        //         'sejarah' => $request->sejarah,
-        //         'tujuan' => $request->tujuan,
-        //         'tentang' => $request->tentang,
-        //     ]);
-        // } else {
-        //     // hapus pdf
-        //     $fileOrg = public_path('storage/profil-pdf') . $profil->struktur_org;
-        //     if (file_exists($fileOrg)) {
-        //         @unlink($fileOrg);
-        //     }
-        //     Storage::delete($fileOrg);
-
-        //     $fileAsm = public_path('storage/profil-pdf') . $profil->struktur_asm;
-        //     if (file_exists($fileAsm)) {
-        //         @unlink($fileAsm);
-        //     }
-        //     Storage::delete($fileAsm);
 
         //     // new pdf
         //     $document = $request->struktur_org;
