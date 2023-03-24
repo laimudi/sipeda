@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\MahasiswaController;
+use App\Http\Controllers\Anggota\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,8 @@ Route::resource('/profil', ProfilController::class);
 Route::resource('/galeri', GaleriController::class);
 Route::resource('/berita', BeritaController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
+
+
+// Anggota
+Route::get('/anggota', [App\Http\Controllers\Anggota\DashboardController::class, 'index']);
+Route::resource('/profile', ProfileController::class);

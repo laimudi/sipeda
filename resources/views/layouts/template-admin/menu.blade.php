@@ -11,7 +11,7 @@
   <li class="nav-item">
     <a href="{{ route('profil.index') }}" class="nav-link {{ Request::is('profil') ? 'collapsed' : '' }}">
       <i class="bi bi-person"></i>
-      <span>Profile</span>
+      <span>Profil</span>
     </a>
   </li>
 
