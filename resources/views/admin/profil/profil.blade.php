@@ -62,8 +62,6 @@
         </ul>
         {{-- @foreach ($profil as $data) --}}
         @if ($profil != null)
-            
-        
         <div class="tab-content pt-4" id="myTabjustifiedContent">
           <div class="tab-pane fade show active" id="sejarah-justified" role="tabpanel" aria-labelledby="sejarah-tab">
             {!! $profil->sejarah !!}
@@ -75,10 +73,13 @@
             {!! $profil->tentang !!}
           </div>
           <div class="tab-pane fade" id="struktur_org-justified" role="tabpanel" aria-labelledby="struktur_org-tab">
-            <iframe src="{{ asset('storage/profil-pdf/pdf-org'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
-          </div>
+            {{-- <iframe src="{{ asset('storage/profil-pdf/pdf-org'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe> --}}
+            {{-- <embed src="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}" type="application/pdf" width="100%" height="600px" /> --}}
+              <a href="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}">Download ORG</a>
+            </div>
           <div class="tab-pane fade" id="struktur_asm-justified" role="tabpanel" aria-labelledby="struktur_asm-tab">
-            <iframe src="{{ asset('public/profil-pdf/pdf-asm'.$profil->struktur_asm) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe>
+            {{-- <iframe src="{{ asset('public/profil-pdf/pdf-asm'.$profil->struktur_asm) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe> --}}
+            <a href="{{ asset('storage/profil-pdf/pdf-asm/'.$profil->struktur_asm) }}">Download ASM</a>
           </div>
         </div>
         @endif

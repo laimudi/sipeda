@@ -135,6 +135,9 @@ h6 {
   font-size: 14px;
   white-space: nowrap;
   transition: 0.3s;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .navbar a i,
@@ -194,6 +197,8 @@ h6 {
   font-size: 14px;
   text-transform: none;
   color: #414c64;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .navbar .dropdown ul a i {
