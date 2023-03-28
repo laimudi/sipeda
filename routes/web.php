@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Anggota\ProfileController;
+use App\Http\Controllers\ketua_org\ProfileeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,8 @@ Route::resource('/mahasiswa', MahasiswaController::class);
 // Anggota
 Route::get('/anggota', [App\Http\Controllers\Anggota\DashboardController::class, 'index']);
 Route::resource('/profile', ProfileController::class);
+
+
+// Ketua-Org
+Route::get('/ketua-org', [App\Http\Controllers\ketua_org\DashboardController::class, 'index']);
+Route::resource('/profilee', ProfileeController::class);
