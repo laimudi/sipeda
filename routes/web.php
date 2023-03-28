@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Anggota\ProfileController;
 use App\Http\Controllers\ketua_org\ProfileeController;
+use App\Http\Controllers\ketua_asm\ProfilleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,3 +53,7 @@ Route::resource('/profile', ProfileController::class);
 // Ketua-Org
 Route::get('/ketua-org', [App\Http\Controllers\ketua_org\DashboardController::class, 'index']);
 Route::resource('/profilee', ProfileeController::class);
+
+// Ketua-Asm
+Route::get('/ketua-asm', [App\Http\Controllers\ketua_asm\DashboardController::class, 'index']);
+Route::resource('/profille', ProfilleController::class);

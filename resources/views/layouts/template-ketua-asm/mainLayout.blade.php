@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ketua | @yield('title')</title>
 
-    @include('layouts.template-ketua.style')
+    @include('layouts.template-ketua-asm.style')
 </head>
 <body>
 
-    @include('layouts.template-ketua.header')
+    @include('layouts.template-ketua-asm.header')
 
-    @include('layouts.template-ketua.sidebar')
+    @include('layouts.template-ketua-asm.sidebar')
 
     <main id="main" class="main">
         @yield('content')
     </main>
 
-    @include('layouts.template-ketua.footer')
+    @include('layouts.template-ketua-asm.footer')
 
-    @include('layouts.template-ketua.script')
+    @include('layouts.template-ketua-asm.script')
     
 </body>
 </html>

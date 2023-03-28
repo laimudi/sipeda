@@ -1,6 +1,6 @@
-@extends('layouts.template-ketua-org.mainLayout')
+@extends('layouts.template-ketua-asm.mainLayout')
 
-@section('title', 'Dashboard-Ketua-Org')
+@section('title', 'Dashboard-Ketua-Asm')
 
 @section('content')
 
