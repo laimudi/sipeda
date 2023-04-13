@@ -1,6 +1,6 @@
-@extends('layouts.template-anggota.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Dashboard')
+@section('title', 'Anggota | Dashboard')
 
 @section('content')
 
@@ -12,6 +12,6 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
     
 @endsection

@@ -1,6 +1,6 @@
-@extends('layouts.template-admin.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Profil')
+@section('title', 'Admin | Profil')
 
 @section('content')
 

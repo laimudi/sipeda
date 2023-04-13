@@ -1,6 +1,6 @@
-@extends('layouts.template-anggota.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Profil')
+@section('title', 'Anggota | Profil')
 
 @section('content')
 
