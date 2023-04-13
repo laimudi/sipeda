@@ -67,17 +67,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     // Ketua-Org
-    // Route::prefix('ketua-org')->group(['middleware' => ['role:anggota']], function () {
-    //     Route::get('/', [App\Http\Controllers\ketua_org\DashboardController::class, 'index']);
-    //     Route::resource('/profilee', ProfileeController::class);
-    // });
+    Route::group(['middleware' => ['role:ketua_org'], 'prefix' => 'ketua_org'], function () {
+        Route::get('/', [App\Http\Controllers\ketua_org\DashboardController::class, 'index'])->name('ketua-org.dashboard');
+        Route::resource('/profilee', ProfileeController::class);
+    });
 
 
     // Ketua-Asm
-    // Route::prefix('ketua-asm')->group(['middleware' => ['role:anggota']], function () {
-    //     Route::get('/', [App\Http\Controllers\ketua_asm\DashboardController::class, 'index']);
-    //     Route::resource('/profille', ProfilleController::class);
-    // });
+    Route::group(['middleware' => ['role:ketua_asm'], 'prefix' => 'ketua_asm'], function () {
+        Route::get('/', [App\Http\Controllers\ketua_asm\DashboardController::class, 'index'])->name('ketua-asm.dashboard');
+        Route::resource('/profille', ProfilleController::class);
+    });
+
+    // Pengurus Asrama
+    Route:
+    Route::group(['middleware' => ['role:pengurus_asm'], 'prefix' => 'pengurus_asm'], function () {
+        Route::get('/', [App\Http\Controllers\pengurus_asm\DashboardController::class, 'index'])->name('pengurus-asm.dashboard');
+    });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

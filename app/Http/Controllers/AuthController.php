@@ -30,9 +30,15 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             } elseif ($role == 'anggota') {
                 return redirect()->route('anggota.dashboard');
+            } elseif ($role == 'ketua_org') {
+                return redirect()->route('ketua-org.dashboard');
+            } elseif ($role == 'ketua_asm') {
+                return redirect()->route('ketua-asm.dashboard');
+            } elseif ($role == 'pengurus_asm') {
+                return redirect()->route('pengurus-asm.dashboard');
             } else {
-                // return redirect()->route('sejarah');
-                dd($role);
+                return redirect()->route('home');
+                // dd($role);
             }
         }
         return back()->with('status', 'Username atau Password Salah');

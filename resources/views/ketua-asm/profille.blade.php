@@ -1,6 +1,6 @@
-@extends('layouts.template-ketua-asm.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Asrama Profil')
+@section('title', 'Ketua Asrama | Profil')
 
 @section('content')
 

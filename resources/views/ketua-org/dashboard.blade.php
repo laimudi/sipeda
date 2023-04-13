@@ -1,6 +1,6 @@
-@extends('layouts.template-ketua-org.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Dashboard-Ketua-Org')
+@section('title', 'Ketua Organisasi | Dashboard')
 
 @section('content')
 
@@ -12,6 +12,10 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
+
+    <section class="section">
+        <h1>Selamat Datang Ketua Organisasi</h1>
+    </section>
     
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.partials.mainLayout')
 
-@section('title', 'Ketua Asrama | Dashboard')
+@section('title', 'Pengurus Asrama | Dashboard')
 
 @section('content')
 
@@ -15,7 +15,7 @@
     </div>
 
     <section class="section">
-        <h1>Selamat Datang Ketua Asrama</h1>
+        <h1>Selamat Datang Pengurus Asrama</h1>
     </section>
     
 @endsection

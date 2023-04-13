@@ -1,6 +1,6 @@
-@extends('layouts.template-ketua-org.mainLayout')
+@extends('layouts.partials.mainLayout')
 
-@section('title', 'Organisasi Profil')
+@section('title', 'Ketua Organisasi | Profil')
 
 @section('content')
 
