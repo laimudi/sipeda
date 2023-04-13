@@ -1,6 +1,6 @@
 @extends('layouts.partials.mainLayout')
 
-@section('title', 'Admin | Dashboard')
+@section('title', 'Anggota | Dashboard')
 
 @section('content')
 
@@ -13,5 +13,9 @@
         </ol>
         </nav>
     </div>
+
+    <section class="section">
+        <h1>Selamat Datang Anggota Baru</h1>
+    </section>
     
 @endsection

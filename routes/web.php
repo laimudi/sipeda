@@ -60,8 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Anggota
     Route::group(['middleware' => ['role:anggota'], 'prefix' => 'anggota'], function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('anggota.dashboard');
-        Route::resource('/profil', ProfileController::class);
+        Route::get('/', [App\Http\Controllers\Anggota\DashboardController::class, 'index'])->name('anggota.dashboard');
+        Route::resource('/profile', ProfileController::class);
     });
 
 

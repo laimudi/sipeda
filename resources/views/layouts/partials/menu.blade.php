@@ -36,7 +36,7 @@
       <span>Berita</span>
     </a>
   </li>    
-@elseif (auth()->user()->role->name == 'anggota')
+@elseif (auth()->user()->role->nama == 'anggota')
   <li class="nav-item">
     <a href="{{ url('/anggota') }}" class="nav-link {{ Request::is('dashboard/anggota') ? 'collapsed' : '' }}">
       <i class="bi bi-grid"></i>
