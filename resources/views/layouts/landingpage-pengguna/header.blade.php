@@ -29,7 +29,7 @@
           </li>
           <li><a class="nav-link scrollto" href="#galeri">Galeri</a></li>
           <li><a class="nav-link scrollto " href="#berita">Berita</a></li>
-          <li><a class="getstarted" href="/login">Login</a></li>
+          <li><a class="getstarted" href="{{ route('login') }}">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
