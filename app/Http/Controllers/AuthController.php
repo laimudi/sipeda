@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Http\Controllers\toast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Psy\Readline\Hoa\Console;
 
@@ -71,6 +74,33 @@ class AuthController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function storeRegister(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:anggota',
+            'password' => 'required'
+        ]);
+
+        $email = User::where('email', $request->email)->first();
+        if ($email) {
+            if ($validator->fails()) {
+                return back()->with('Email sudah terdaftar silahkan login');
+            }
+        }
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'role_id' => $request[2]
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('anggota.dashboard');
     }
 
     public function logout()

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
 
-    @include('layouts.template-admin.style')
+    @include('layouts.partials.style')
 </head>
 <body>
 
@@ -26,7 +26,7 @@
                     </a>
                   </div><!-- End Logo -->
     
-                  <div class="card mb-3">
+                  <div class="card shadow mb-3">
     
                     <div class="card-body">
     
@@ -34,26 +34,24 @@
                         <h5 class="card-title text-center pb-0 fs-4">Buat Akun</h5>
                       </div>
     
-                      <form class="row g-3 needs-validation" novalidate>
+                      <form action="{{ route('register') }}" method="POST" class="row g-3 needs-validation" novalidate>
+                        @csrf
                         <div class="col-12">
-                          <label for="yourName" class="form-label">Nama</label>
-                          <input type="text" name="name" class="form-control" id="yourName" required>
-                          <div class="invalid-feedback">Please, enter your name!</div>
+                          <label for="name" class="form-label">Nama</label>
+                          <input type="text" name="name" class="form-control" id="name" required>
                         </div>
     
                         <div class="col-12">
-                          <label for="yourUsername" class="form-label">Email</label>
+                          <label for="email" class="form-label">Email</label>
                           <div class="input-group has-validation">
                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            <input type="text" name="username" class="form-control" id="yourUsername" required>
-                            <div class="invalid-feedback">Please choose a username.</div>
+                            <input type="text" name="email" class="form-control" id="email" required>
                           </div>
                         </div>
     
                         <div class="col-12">
-                          <label for="yourPassword" class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control" id="yourPassword" required>
-                          <div class="invalid-feedback">Please enter your password!</div>
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" name="password" class="form-control" id="password" required>
                         </div>
 
                         <div class="col-12">
