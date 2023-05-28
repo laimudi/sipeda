@@ -8,6 +8,6 @@ class VisiMisiController extends Controller
 {
     public function visimisi()
     {
-        return view('pengguna.visimisi');
+        return view('visimisi');
     }
 }

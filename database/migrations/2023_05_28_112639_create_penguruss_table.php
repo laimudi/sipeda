@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profils', function (Blueprint $table) {
+        Schema::create('penguruss', function (Blueprint $table) {
             $table->id();
-            $table->longText('sejarah')->required();
-            $table->longText('tujuan')->required();
-            $table->longText('tentang')->required();
-            $table->string('struktur_org', 150)->required();
-            $table->string('struktur_asm', 150)->required();
+            $table->string('nm_pengurus', 200)->required();
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profils');
+        Schema::dropIfExists('penguruss');
     }
 };

@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\ketua_asm;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class ProfilleController extends Controller
+class PengurusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('ketua-asm.profille');
+        $pengurus = Pengurus::with('bidangs');
+        return view('admin.pengurus.pengurusss', compact('pengurus'));
     }
 
     /**
@@ -20,7 +24,8 @@ class ProfilleController extends Controller
      */
     public function create()
     {
-        //
+        $bidang = Bidang::select('id', 'bidang')->get();
+        return view('admin.pengurus.modal_tambah', compact('bidang'));
     }
 
     /**
@@ -28,7 +33,17 @@ class ProfilleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pengurus = Pengurus::create([
+            'nm_pengurus' => $request->nm_pengurus,
+            'bidang_id' => $request->bidang_id
+        ]);
+
+        if ($pengurus) {
+            Session::flash('tambah', 'success');
+            Session::flash('message', 'Data Berhasil Ditambahkan');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +75,7 @@ class ProfilleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pengurus::destroy($id);
+        return redirect()->route('pengurus.index');
     }
 }

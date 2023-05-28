@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profil extends Model
+class Bidang extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'sejarah',
-        'tujuan',
-        'tentang',
-        'struktur_org'
+        'bidang'
     ];
+
+    public function pengurus()
+    {
+        return $this->belongsTo(Pengurus::class, 'bidang_id', 'id');
+    }
 }

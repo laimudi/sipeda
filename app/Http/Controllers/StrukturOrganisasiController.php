@@ -8,6 +8,6 @@ class StrukturOrganisasiController extends Controller
 {
     public function strukturorganisasi()
     {
-        return view('pengguna.strukturorganisasi');
+        return view('strukturorganisasi');
     }
 }

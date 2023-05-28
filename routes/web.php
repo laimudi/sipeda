@@ -7,8 +7,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Anggota\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\BidangController;
+use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\ketua_org\ProfileeController;
-use App\Http\Controllers\ketua_asm\ProfilleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
         Route::resource('/profil', ProfilController::class);
+        Route::resource('/pengurus', PengurusController::class);
+        Route::resource('/bidang', BidangController::class);
         Route::resource('/galeri', GaleriController::class);
         Route::resource('/berita', BeritaController::class);
         Route::resource('/mahasiswa', MahasiswaController::class);
@@ -71,19 +74,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:ketua_org'], 'prefix' => 'ketua_org'], function () {
         Route::get('/', [App\Http\Controllers\ketua_org\DashboardController::class, 'index'])->name('ketua-org.dashboard');
         Route::resource('/profilee', ProfileeController::class);
-    });
-
-
-    // Ketua-Asm
-    Route::group(['middleware' => ['role:ketua_asm'], 'prefix' => 'ketua_asm'], function () {
-        Route::get('/', [App\Http\Controllers\ketua_asm\DashboardController::class, 'index'])->name('ketua-asm.dashboard');
-        Route::resource('/profille', ProfilleController::class);
-    });
-
-    // Pengurus Asrama
-    Route:
-    Route::group(['middleware' => ['role:pengurus_asm'], 'prefix' => 'pengurus_asm'], function () {
-        Route::get('/', [App\Http\Controllers\pengurus_asm\DashboardController::class, 'index'])->name('pengurus-asm.dashboard');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

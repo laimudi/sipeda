@@ -33,13 +33,6 @@
                       <p>pdf</p>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="struktur_asm">Struktur Asrama</label>
-                    <div class="form-group">
-                      <input class="form-control" type="file" id="struktur_asm" name="struktur_asm" required>
-                      <p>pdf</p>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

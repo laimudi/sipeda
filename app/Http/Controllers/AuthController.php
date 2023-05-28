@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Controllers\toast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -35,40 +34,12 @@ class AuthController extends Controller
                 return redirect()->route('anggota.dashboard');
             } elseif ($role == 'ketua_org') {
                 return redirect()->route('ketua-org.dashboard');
-            } elseif ($role == 'ketua_asm') {
-                return redirect()->route('ketua-asm.dashboard');
-            } elseif ($role == 'pengurus_asm') {
-                return redirect()->route('pengurus-asm.dashboard');
             } else {
                 return redirect()->route('home');
                 // dd($role);
             }
         }
         return back()->with('status', 'Username atau Password Salah');
-
-        // $credentials = $request->validate([
-        //     'email' => ['required', 'email'],
-        //     'password' => ['required'],
-        // ]);
-
-        // if (Auth::attempt($credentials)) {
-        //     $user = auth()->user()->role;
-        //     if ($user == 'Admin') {
-        //         return redirect()->route('admin.dashboard');
-        //     } elseif ($user == 'Anggota') {
-        //         return redirect()->route('anggota.dashboard');
-        //     } else {
-        //         return redirect()->route('dashboard_kepala');
-        //     }
-        // }
-
-        // return redirect()->back();
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     return redirect()->intended('/');
-        // }
     }
 
     public function register()
@@ -81,6 +52,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:anggota',
+            'role_id' => 'anggota',
             'password' => 'required'
         ]);
 
@@ -91,14 +63,12 @@ class AuthController extends Controller
             }
         }
 
-        $user = User::create([
+        User::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'role_id' => $request[2]
+            'role_id' => $request['role_id'],
+            'password' => Hash::make($request['password'])
         ]);
-
-        Auth::login($user);
 
         return redirect()->route('anggota.dashboard');
     }

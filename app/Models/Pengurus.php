@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profil extends Model
+class Pengurus extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'sejarah',
-        'tujuan',
-        'tentang',
-        'struktur_org'
+        'nm_pengurus',
+        'bidang_id'
     ];
+
+    public function bidang()
+    {
+        return $this->hasMany(Bidang::class, 'bidang_id', 'id');
+    }
 }

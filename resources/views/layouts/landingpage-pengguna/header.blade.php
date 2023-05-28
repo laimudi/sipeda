@@ -13,12 +13,7 @@
             <ul>
               <li><a class="nav-link scrollto" href="/sejarah">Sejarah</a></li>
               <li><a href="/visimisi">Visi dan Misi</a></li>
-              <li class="dropdown"><a href="#"><span>Struktur</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="/strukturorganisasi">Struktur Organisasi</a></li>
-                  <li><a href="strukturasrama">Struktur Asrama</a></li>
-                </ul>
-              </li>
+              <li><a href="/strukturorganisasi">Struktur Organisasi</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>

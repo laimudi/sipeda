@@ -38,8 +38,7 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         $validasi = Validator::make($request->all(), [
-            'struktur_org' => 'required|mimes:pdf',
-            'struktur_asm' => 'required|mimes:pdf'
+            'struktur_org' => 'required|mimes:pdf'
         ]);
 
         if ($validasi->fails()) {
@@ -50,16 +49,11 @@ class ProfilController extends Controller
         $struktur_org = time() . '.' . $document->getClientOriginalExtension();
         $request->struktur_org->move(public_path('storage/profil-pdf/pdf-org/'), $struktur_org);
 
-        $documents = $request->struktur_asm;
-        $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
-        $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm/'), $struktur_asm);
-
         $profil = Profil::create([
             'sejarah' => $request->sejarah,
             'tujuan' => $request->tujuan,
             'tentang' => $request->tentang,
-            'struktur_org' => $struktur_org,
-            'struktur_asm' => $struktur_asm
+            'struktur_org' => $struktur_org
         ]);
         return redirect()->back();
     }
@@ -88,7 +82,7 @@ class ProfilController extends Controller
     {
         $profil = Profil::findOrFail($id);
         // logika kalau kosong data yang di upload
-        if ($request->file('struktur_org') == null && $request->file('struktur_asm') == null) {
+        if ($request->file('struktur_org') == null) {
             $profil->update([
                 'sejarah' => $request->sejarah,
                 'tujuan' => $request->tujuan,
@@ -118,29 +112,6 @@ class ProfilController extends Controller
                 'tujuan' => $request->tujuan,
                 'tentang' => $request->tentang,
                 'struktur_org' => $struktur_org
-            ]);
-        }
-
-        // ini logika kalau yang diupdate hanya file asm
-        elseif ($request->file('struktur_asm') != null) {
-            // Hapus FIle Lama
-            $fileAsm = public_path('storage/profil-pdf/pdf-asm') . $profil->struktur_asm;
-            if (file_exists($fileAsm)) {
-                @unlink($fileAsm);
-            }
-            Storage::delete($fileAsm);
-
-            // Ganti Dengan Data Baru
-
-            $documents = $request->struktur_asm;
-            $struktur_asm = time() . '.' . $documents->getClientOriginalExtension();
-            $request->struktur_asm->move(public_path('storage/profil-pdf/pdf-asm'), $struktur_asm);
-
-            $profil->update([
-                'sejarah' => $request->sejarah,
-                'tujuan' => $request->tujuan,
-                'tentang' => $request->tentang,
-                'struktur_asm' => $struktur_asm,
             ]);
         }
         return redirect()->back();

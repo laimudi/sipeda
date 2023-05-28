@@ -8,6 +8,6 @@ class SejarahController extends Controller
 {
     public function sejarah()
     {
-        return view('pengguna.sejarah');
+        return view('sejarah');
     }
 }

@@ -56,9 +56,6 @@
             <li class="nav-item flex-fill" role="presentation">
               <button class="nav-link w-100" id="struktur_org-tab" data-bs-toggle="tab" data-bs-target="#struktur_org-justified" type="button" role="tab" aria-controls="struktur_org" aria-selected="false">Struktur Organisasi</button>
             </li>
-            <li class="nav-item flex-fill" role="presentation">
-              <button class="nav-link w-100" id="struktur_asm-tab" data-bs-toggle="tab" data-bs-target="#struktur_asm-justified" type="button" role="tab" aria-controls="struktur_asm" aria-selected="false">Struktur Asrama</button>
-            </li>
         </ul>
         {{-- @foreach ($profil as $data) --}}
         @if ($profil != null)
@@ -76,10 +73,6 @@
             {{-- <iframe src="{{ asset('storage/profil-pdf/pdf-org'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe> --}}
             {{-- <embed src="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}" type="application/pdf" width="100%" height="600px" /> --}}
               <a href="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}">Download ORG</a>
-            </div>
-          <div class="tab-pane fade" id="struktur_asm-justified" role="tabpanel" aria-labelledby="struktur_asm-tab">
-            {{-- <iframe src="{{ asset('public/profil-pdf/pdf-asm'.$profil->struktur_asm) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe> --}}
-            <a href="{{ asset('storage/profil-pdf/pdf-asm/'.$profil->struktur_asm) }}">Download ASM</a>
           </div>
         </div>
         @endif
