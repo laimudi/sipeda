@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bidang;
-use App\Models\Pengurus;
+use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class PengurusController extends Controller
+class AgendaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $pengurus = Pengurus::with('bidangs');
-        $pengurus = Pengurus::all();
-        $bidangs = Bidang::all();
-        return view('admin.pengurus.pengurus', compact('bidangs', 'pengurus'));
+        $agenda = Agenda::all();
+        return view('admin.informasi.agenda', compact('agenda'));
     }
 
     /**
@@ -34,15 +31,14 @@ class PengurusController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $pengurus = Pengurus::create($request->all());
+        $agenda = Agenda::create($request->all());
 
-        if ($pengurus) {
+        if ($agenda) {
             Session::flash('tambah', 'success');
             Session::flash('message', 'Data Berhasil Ditambahkan');
         }
 
-        return redirect()->route('pengurus.index');
+        return redirect()->back();
     }
 
     /**
@@ -66,11 +62,10 @@ class PengurusController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pengurus = Pengurus::findOrFail($id);
+        $agenda = Agenda::findOrFail($id);
+        $agenda->update($request->all());
 
-        $pengurus->update($request->all());
-
-        if ($pengurus) {
+        if ($agenda) {
             Session::flash('edit', 'success');
             Session::flash('message', 'Data Berhasil Diedit');
         }
@@ -83,7 +78,7 @@ class PengurusController extends Controller
      */
     public function destroy(string $id)
     {
-        Pengurus::destroy($id);
-        return redirect()->route('pengurus.index');
+        Agenda::destroy($id);
+        return redirect()->route('agenda.index');
     }
 }

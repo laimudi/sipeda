@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bidang;
-use App\Models\Pengurus;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class PengurusController extends Controller
+class PengumumanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $pengurus = Pengurus::with('bidangs');
-        $pengurus = Pengurus::all();
-        $bidangs = Bidang::all();
-        return view('admin.pengurus.pengurus', compact('bidangs', 'pengurus'));
+        $pengumuman = Pengumuman::all();
+        return view('admin.informasi.pengumuman', compact('pengumuman'));
     }
 
     /**
@@ -34,15 +31,17 @@ class PengurusController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $pengurus = Pengurus::create($request->all());
+        $pengumuman = Pengumuman::create([
+            'pengumuman' => $request->pengumuman,
+            'tanggal' => $request->tanggal
+        ]);
 
-        if ($pengurus) {
+        if ($pengumuman) {
             Session::flash('tambah', 'success');
             Session::flash('message', 'Data Berhasil Ditambahkan');
         }
 
-        return redirect()->route('pengurus.index');
+        return redirect()->back();
     }
 
     /**
@@ -66,11 +65,10 @@ class PengurusController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pengurus = Pengurus::findOrFail($id);
+        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman->update($request->all());
 
-        $pengurus->update($request->all());
-
-        if ($pengurus) {
+        if ($pengumuman) {
             Session::flash('edit', 'success');
             Session::flash('message', 'Data Berhasil Diedit');
         }
@@ -83,7 +81,7 @@ class PengurusController extends Controller
      */
     public function destroy(string $id)
     {
-        Pengurus::destroy($id);
-        return redirect()->route('pengurus.index');
+        Pengumuman::destroy($id);
+        return redirect()->route('pengumuman.index');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\BeritaController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Anggota\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\BidangController;
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\ketua_org\ProfileeController;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/galeri', GaleriController::class);
         Route::resource('/berita', BeritaController::class);
         Route::resource('/mahasiswa', MahasiswaController::class);
+        Route::resource('/pengumuman', PengumumanController::class);
+        Route::resource('/agenda', AgendaController::class);
         // });
     });
 

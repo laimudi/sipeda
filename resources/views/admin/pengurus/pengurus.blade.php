@@ -33,15 +33,13 @@
           <div class="col-12 col-md-12 order-md-12 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a type="button" class="btn btn-outline-primary"
-                    href="{{ route('pengurus.create') }}">
-                    Tambah Pengurus
-                    </a>
-                </li>
-              </ol>
+                <li class="breadcrumb-item"><button type="button" class="btn btn-outline-primary"
+                        data-bs-toggle="modal" data-bs-target="#tambahPengurus">
+                        Tambah Pengurus
+                    </button></li>
+            </ol>
+            @include('admin.pengurus.modal_tambah')
             </nav>
-            
           </div>
       </div>
       <div class="card-body shadow">
@@ -61,9 +59,9 @@
                   <tr>
                     <th>{{ $loop->iteration }}</th>
                     <td>{{ $data->nm_pengurus }}</td>
-                    <td>{{ $data->bidangs->bindang }}</td>
+                    <td>{{ $data->bidang->bidang }}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal"data-bs-target="#editBidang-{{$data->id}}">
+                        <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal"data-bs-target="#editPengurus-{{$data->id}}">
                           <i class="ri-edit-box-line"></i>
                         </button>
                         <form action="{{ route('pengurus.destroy', $data->id) }}" method="POST">
@@ -75,8 +73,9 @@
                         </form>
                     </td>
                   </tr>
-                  @endforeach
                   </tbody>
+                  @include('admin.pengurus.modal_edit')
+                  @endforeach
               </table>
           </div>
       </div>

@@ -32,7 +32,7 @@
 
   <li class="nav-item">
     <a href="{{ route('bidang.index') }}" class="nav-link {{ Request::is('bidang') ? 'collapsed' : '' }}">
-      <i class="bi bi-people-fill"></i>
+      <i class="bi bi-exclamation-circle"></i>
       <span>Bidang</span>
     </a>
   </li>
@@ -43,12 +43,12 @@
     </a>
     <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="#">
+        <a href="{{  route('pengumuman.index') }}" class="nav-link {{ Request::is('pengumuman') ? 'collapsed' : '' }}">
           <i class="bi bi-circle"></i><span>Pengumuman</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="{{ route('agenda.index') }}" class="nav-link {{ Request::is('agenda') ? 'collapsed' : '' }}">
           <i class="bi bi-circle"></i><span>Agenda</span>
         </a>
       </li>

@@ -16,6 +16,8 @@ class Pengurus extends Model
 
     public function bidang()
     {
-        return $this->hasMany(Bidang::class, 'bidang_id', 'id');
+        return $this->belongsTo(Bidang::class, 'bidang_id', 'id');
     }
+
+    protected $table = 'penguruss';
 }
