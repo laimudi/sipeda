@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Anggota;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class PendaftaranController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('anggota.profile');
+        return view('anggota.pendaftaran');
     }
 
     /**

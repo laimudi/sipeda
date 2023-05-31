@@ -6,11 +6,12 @@ use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MahasiswaController;
-use App\Http\Controllers\Anggota\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PengurusController;
+use App\Http\Controllers\Anggota\AnggotaController;
+use App\Http\Controllers\Anggota\PendaftaranController;
 use App\Http\Controllers\ketua_org\ProfileeController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,7 +70,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Anggota
     Route::group(['middleware' => ['role:anggota'], 'prefix' => 'anggota'], function () {
         Route::get('/', [App\Http\Controllers\Anggota\DashboardController::class, 'index'])->name('anggota.dashboard');
-        Route::resource('/profile', ProfileController::class);
+        Route::resource('/anggota', AnggotaController::class);
+        Route::resource('/pendaftaran', PendaftaranController::class);
     });
 
 
