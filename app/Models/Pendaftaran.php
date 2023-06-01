@@ -13,9 +13,13 @@ class Pendaftaran extends Model
         'nm_lengkap',
         'gender',
         'tmp_lahir',
-        'alamat',
+        'tgl_lahir',
         'agama',
+        'alamat',
         'penyakit',
-        'telepon_ortu'
+        'telepon_ortu',
+        'gambar'
     ];
+
+    protected $table = 'pendaftarans';
 }

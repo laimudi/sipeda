@@ -31,6 +31,13 @@
   </li>
 
   <li class="nav-item">
+    <a href="{{ route('pendaftar.index') }}" class="nav-link {{ Request::is('pendaftar') ? 'collapsed' : '' }}">
+      <i class="bi bi-people-fill"></i>
+      <span>Daftar Pendaftar</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
     <a href="{{ route('bidang.index') }}" class="nav-link {{ Request::is('bidang') ? 'collapsed' : '' }}">
       <i class="bi bi-exclamation-circle"></i>
       <span>Bidang</span>

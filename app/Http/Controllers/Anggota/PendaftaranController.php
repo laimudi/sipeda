@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Anggota;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Anggota;
+use App\Models\Pendaftar;
+use App\Models\Pendaftaran;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PendaftaranController extends Controller
 {
@@ -13,7 +17,10 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        return view('anggota.pendaftaran');
+        $pendaftar = Pendaftar::first();
+        $anggotas = Anggota::first();
+        $daftar = Pendaftaran::first();
+        return view('anggota.pendaftaran', compact('daftar', 'anggotas', 'pendaftar'));
     }
 
     /**
@@ -29,7 +36,27 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gambar = $request->file('gambar');
+        $gambar->store('pendaftaran-gambar', 'public');
+
+        $daftar = Pendaftaran::create([
+            'nm_lengkap' => $request->nm_lengkap,
+            'gender' => $request->gender,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'penyakit' => $request->penyakit,
+            'telepon_ortu' => $request->telepon_ortu,
+            'gambar' => $gambar->hashName()
+        ]);
+
+        if ($daftar) {
+            Session::flash('tambah', 'success');
+            Session::flash('message', 'Anda berhasil mendaftar silahkan print formulir dan dibawa pada saat kegiatan berlangsung');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -62,5 +89,13 @@ class PendaftaranController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function cetakFormulir($id)
+    {
+        $pendaftar = Pendaftar::findOrFail($id);
+        $daftar = Pendaftaran::findOrFail($id);
+        $pdf = Pdf::loadView('anggota.cetak_pendaftaran', compact('daftar', 'pendaftar'));
+        return $pdf->download('Formulir-Pendaftaran-OPN.pdf');
     }
 }

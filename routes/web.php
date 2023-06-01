@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\BidangController;
+use App\Http\Controllers\Admin\PendaftarController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Anggota\AnggotaController;
@@ -64,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/mahasiswa', MahasiswaController::class);
         Route::resource('/pengumuman', PengumumanController::class);
         Route::resource('/agenda', AgendaController::class);
+        Route::resource('/pendaftar', PendaftarController::class);
         // });
     });
 
@@ -72,6 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [App\Http\Controllers\Anggota\DashboardController::class, 'index'])->name('anggota.dashboard');
         Route::resource('/anggota', AnggotaController::class);
         Route::resource('/pendaftaran', PendaftaranController::class);
+
+        //cetak Formulir
+        Route::get('anggota/cetakFormulir/{id}', [\App\Http\Controllers\Anggota\PendaftaranController::class, 'cetakFormulir'])->name('cetak.formulir');
     });
 
 
