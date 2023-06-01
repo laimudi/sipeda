@@ -60,7 +60,7 @@
                 <div class="mb-3">
                     <label for="nm_pengurus">Nama</label>
                     <div class="form-group">
-                      <input class="form-control" type="text" name="nm_pengurus" id="nm_pengurus" required>
+                        <textarea class="form-control" name="nm_pengurus" id="nm_pengurus" cols="30" rows="10" required></textarea>
                     </div>
                 </div>
                 <div class="mb-3">

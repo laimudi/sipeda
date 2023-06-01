@@ -59,17 +59,17 @@
         </ul>
         {{-- @foreach ($profil as $data) --}}
         @if ($profil != null)
-        <div class="tab-content pt-4" id="myTabjustifiedContent">
-          <div class="tab-pane fade show active" id="sejarah-justified" role="tabpanel" aria-labelledby="sejarah-tab">
-            {!! $profil->sejarah !!}
+        <div class="tab-content pt-4" id="myTabjustifiedContent" style="text-align: justify">
+          <div class="tab-pane fade show active d-flex justify-content" id="sejarah-justified" role="tabpanel" aria-labelledby="sejarah-tab">
+            {!!  nl2br($profil->sejarah) !!}
           </div>
-          <div class="tab-pane fade" id="tujuan-justified" role="tabpanel" aria-labelledby="tujuan-tab">
-            {!! $profil->tujuan !!}
+          <div class="tab-pane fade d-flex justify-content" id="tujuan-justified" role="tabpanel" aria-labelledby="tujuan-tab">
+            {!!  nl2br($profil->tujuan) !!}
           </div>
-          <div class="tab-pane fade" id="tentang-justified" role="tabpanel" aria-labelledby="tentang-tab">
-            {!! $profil->tentang !!}
+          <div class="tab-pane fade d-flex justify-content" id="tentang-justified" role="tabpanel" aria-labelledby="tentang-tab">
+            {!!  nl2br($profil->tentang) !!}
           </div>
-          <div class="tab-pane fade" id="struktur_org-justified" role="tabpanel" aria-labelledby="struktur_org-tab">
+          <div class="tab-pane fade d-flex justify-content" id="struktur_org-justified" role="tabpanel" aria-labelledby="struktur_org-tab">
             {{-- <iframe src="{{ asset('storage/profil-pdf/pdf-org'.$profil->struktur_org) }}" align="top" height="620" width="100%" scrolling="auto" frameborder="0"></iframe> --}}
             {{-- <embed src="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}" type="application/pdf" width="100%" height="600px" /> --}}
               <a href="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}">Download ORG</a>

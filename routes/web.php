@@ -34,9 +34,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/sejarah', [App\Http\Controllers\SejarahController::class, 'sejarah']);
-Route::get('/visimisi', [App\Http\Controllers\VisiMisiController::class, 'visimisi']);
-Route::get('/strukturorganisasi', [App\Http\Controllers\StrukturOrganisasiController::class, 'strukturorganisasi']);
-Route::get('/strukturasrama', [App\Http\Controllers\StrukturAsramaController::class, 'strukturasrama']);
 
 
 // Login

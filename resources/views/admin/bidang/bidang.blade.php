@@ -53,8 +53,8 @@
               </tr>
             </thead>
             <tbody>
-            <tr>
             @foreach ($bidang as $data)
+            <tr>
               <th>{{ $loop->iteration }}</th>
               <td>{{ $data->bidang }}</td>
               <td>

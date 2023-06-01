@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use PDF;
 use App\Models\Profil;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use PDF;
 
 class ProfilController extends Controller
 {
@@ -55,6 +56,12 @@ class ProfilController extends Controller
             'tentang' => $request->tentang,
             'struktur_org' => $struktur_org
         ]);
+
+        if ($profil) {
+            Session::flash('tambah', 'success');
+            Session::flash('message', 'Data Berhasil Ditambahkan');
+        }
+
         return redirect()->back();
     }
 
@@ -113,6 +120,11 @@ class ProfilController extends Controller
                 'tentang' => $request->tentang,
                 'struktur_org' => $struktur_org
             ]);
+
+            if ($profil) {
+                Session::flash('edit', 'success');
+                Session::flash('message', 'Data Berhasil Diedit');
+            }
         }
         return redirect()->back();
     }

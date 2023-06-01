@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profils', function (Blueprint $table) {
-            $table->id();
-            $table->longText('sejarah')->required();
-            $table->longText('tujuan')->required();
-            $table->longText('tentang')->required();
-            $table->timestamps();
+        Schema::table('profils', function (Blueprint $table) {
+            $table->string('struktur_org', 100)->required()->after('tentang');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profils');
+        Schema::table('profils', function (Blueprint $table) {
+            $table->dropColumn('struktur_org');
+        });
     }
 };

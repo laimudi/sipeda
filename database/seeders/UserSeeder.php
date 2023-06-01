@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         $users = [
             ['name' => "Administrator", 'email' => 'admin@gmail.com', 'role_id' => 1, 'password' => Hash::make('admin')],
             ['name' => "Anggota Pamong Praja", 'email' => 'anggota@gmail.com', 'role_id' => 2, 'password' => Hash::make('anggota')],
-            ['name ' => "Ketua Organisasi", 'email' => 'ketuaorg@gmail.com', 'role_id' => 3, 'password' => Hash::make('ketua_org')]
+            ['name' => "Ketua Organisasi", 'email' => 'ketuaorg@gmail.com', 'role_id' => 3, 'password' => Hash::make('ketua')]
         ];
 
         foreach ($users as $user) {

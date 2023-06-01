@@ -38,12 +38,14 @@
                             <th>Nama Lengkap</th>
                             <th>Perguruan Tinggi/Jurusan</th>
                             <th>Asal Kecamatan/Desa</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th></th>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

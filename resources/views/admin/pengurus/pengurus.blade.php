@@ -58,7 +58,7 @@
                   @foreach ($pengurus as $data)
                   <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $data->nm_pengurus }}</td>
+                    <td>{!! nl2br($data->nm_pengurus) !!}</td>
                     <td>{{ $data->bidang->bidang }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal"data-bs-target="#editPengurus-{{$data->id}}">

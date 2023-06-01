@@ -24,22 +24,5 @@ class RoleSeeder extends Seeder
         foreach ($roles as $role) {
             Role::create($role);
         }
-        // Schema::disableForeignKeyConstraints();
-        // Role::truncate();
-        // Schema::enableForeignKeyConstraints();
-
-        // $data = [
-        //     'nama' => 'Admin',
-        //     'nama' => 'Anggota',
-        //     'nama' => 'KetuaOrg',
-        //     'nama' => 'KetuaAsm'
-        // ];
-        // foreach ($data as $value) {
-        //     Role::insert([
-        //         'nama' => $value['nama'],
-        //         'created_at' => Carbon::now(),
-        //         'updated_at' => Carbon::now()
-        //     ]);
-        // }
     }
 }

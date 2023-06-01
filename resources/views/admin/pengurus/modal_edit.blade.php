@@ -10,10 +10,10 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="nm_pengurus">Nama</label>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="nm_pengurus" id="nm_pengurus" value="{{ $data->nm_pengurus }}" required>
-                    </div>
+                  <label for="nm_pengurus">Nama</label>
+                  <div class="form-group">
+                      <textarea class="form-control" name="nm_pengurus" id="nm_pengurus" cols="30" rows="10" required>{{ $data->nm_pengurus }}</textarea>
+                  </div>
                 </div>
                 <div class="mb-3">
                     <label for="bidang">Bidang</label>
