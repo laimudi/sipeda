@@ -25,7 +25,9 @@
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 mt-5">
           <h3>Keluarga Mahasiswa Indonesia Banggai Laut (KMI-BALUT) Provinsi Gorontalo</h3>
+          @if ($profil != null)
           <h5 class="mt-5">{!!  nl2br($profil->tentang) !!}</h5>
+          @endif
         </div>
       </div>
     </div>
@@ -36,7 +38,9 @@
     <div class="container">
       <div class="section-title mt-5">
         <h2>Tujuan KMI-BALUT</h2>
+        @if ($profil != null)
         <h5>{!!  nl2br($profil->tujuan) !!}</h5>
+        @endif
       </div>
     </div>
   </section>
@@ -142,6 +146,7 @@
       </div>
     </div>
     {{-- Modal Baca Berita --}}
+    @foreach ($berita as $data)
     <div class="modal fade" id="bacaberita-{{ $data->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="bacaberitaLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -168,6 +173,7 @@
         </div>
       </div>
     </div>
+    @endforeach
     {{-- End --}}
   </section>
 

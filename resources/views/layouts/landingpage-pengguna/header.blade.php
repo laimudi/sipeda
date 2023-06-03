@@ -11,7 +11,9 @@
             <ul>
               <li><a class="nav-link scrollto" href="{{ url('sejarah') }}">Sejarah</a></li>
               <li><a href="#tujuan">Tujuan</a></li>
+              @if ($profil != null)
               <li><a href="{{ asset('storage/profil-pdf/pdf-org/'.$profil->struktur_org) }}">Struktur Organisasi</a></li>
+              @endif
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#informasi">Informasi</a></li>
