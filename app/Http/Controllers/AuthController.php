@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Psy\Readline\Hoa\Console;
 
 class AuthController extends Controller
 {
@@ -20,20 +20,20 @@ class AuthController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
 
         // dd($role);
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('username', 'password'))) {
             $role = auth()->user()->role->nama;
             if ($role == 'admin') {
                 return redirect()->route('admin.dashboard');
-            } elseif ($role == 'anggota') {
-                return redirect()->route('anggota.dashboard');
             } elseif ($role == 'ketua_org') {
                 return redirect()->route('ketua-org.dashboard');
+            } elseif ($role == 'anggota') {
+                return redirect()->route('anggota.dashboard');
             } else {
                 return redirect()->route('home');
                 // dd($role);
@@ -49,26 +49,57 @@ class AuthController extends Controller
 
     public function storeRegister(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:anggota',
-            'role_id' => 'anggota',
-            'password' => 'required'
+            'gender' => 'required',
+            'tmp_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'sekolah' => 'required',
+            'universitas' => 'required',
+            'jurusan' => 'required',
+            'fakultas' => 'required',
+            'alamat' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
+            'kecamatan' => 'required',
+            'telepon' => 'required'
         ]);
 
-        $email = User::where('email', $request->email)->first();
-        if ($email) {
+        $username = User::where('username', $request->username)->first();
+        if ($username) {
             if ($validator->fails()) {
-                return back()->with('Email sudah terdaftar silahkan login');
+                return back()->with('Username sudah terdaftar silahkan login');
             }
         }
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'role_id' => $request['role_id'],
-            'password' => Hash::make($request['password'])
+        $anggota = Anggota::create([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'sekolah' => $request->sekolah,
+            'universitas' => $request->universitas,
+            'jurusan' => $request->jurusan,
+            'fakultas' => $request->fakultas,
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
+            'kecamatan' => $request->kecamatan,
+            'telepon' => $request->telepon
         ]);
+
+        $users = User::create([
+            'username' => $request->username,
+            'role_id' => 3,
+            'password' => Hash::make($request['password']),
+            'anggota_id' => $anggota->id
+        ]);
+
+        // dd($users->anggota);
+        // dd($anggota->user);
+
+        Auth::login($users);
 
         return redirect()->route('anggota.dashboard');
     }

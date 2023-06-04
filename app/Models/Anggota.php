@@ -10,7 +10,7 @@ class Anggota extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nm_lengkap',
+        'name',
         'gender',
         'tmp_lahir',
         'tgl_lahir',
@@ -25,4 +25,9 @@ class Anggota extends Model
         'telepon',
         'gambar'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

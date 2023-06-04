@@ -32,25 +32,30 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">LOGIN</h5>
-                    <p class="text-center small">Masukkan email & password</p>
+                    <p class="text-center small">Masukkan username & password</p>
                   </div>
 
                   <form action="{{ route('login') }}" method="post" class="row g-3 needs-validation">
                     @csrf
                     <div class="col-12">
-                      <label for="email" class="form-label">Email</label>
+                      <label for="username" class="form-label">Username</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="email" class="form-control" id="email" required>
+                        <input type="text" name="username" value="{{ old('username')}}" class="form-control" id="username" required>
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
                     </div>
+                    @if($errors->has('username'))
+                            <div class="alert alert-danger">{{ $errors->first('username') }}</div>
+                            @endif
 
                     <div class="col-12">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password" required>
+                      <input type="password" name="password" class="form-control" id="password" value="{{ old('password')}}" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
+                    @if($errors->has('password'))
+                            <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+                            @endif
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>

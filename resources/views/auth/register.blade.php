@@ -36,17 +36,91 @@
     
                       <form action="{{ route('register') }}" method="POST" class="row g-3 needs-validation" novalidate>
                         @csrf
-                        <div class="col-12">
-                          <input type="hidden" name="role_id" class="form-control" id="role_id" value="2" required>
-                          <label for="name" class="form-label">Nama</label>
-                          <input type="text" name="name" class="form-control" id="name" required>
-                        </div>
+                          <div class="mb-3">
+                              <label for="name">Name Lengkap</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="name" id="name" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="gender">Jenis Kelamin</label>
+                            <select class="form-select" name="gender" id="gender">
+                                <option selected>Jenis Kelamin</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuna</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="tmp_lahir">Tempat Lahir</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="tmp_lahir" id="tmp_lahir" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="tgl_lahir">Tanggal Lahir</label>
+                              <div class="form-group">
+                                <input class="form-control" type="date" id="tgl_lahir" name="tgl_lahir" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="sekolah">Asal Sekolah</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="sekolah" id="sekolah" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="universitas">Universitas</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="universitas" id="universitas" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="jurusan">Jurusan</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="jurusan" id="jurusan" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="fakultas">Fakultas</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="fakultas" id="fakultas" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="alamat">Alamat</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="alamat" id="alamat" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="provinsi">Provinsi</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="provinsi" id="provinsi" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="kabupaten">Kabupaten/Kota</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="kabupaten" id="kabupaten" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="kecamatan">Kecamatan/Desa</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="kecamatan" id="kecamatan" required>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="telepon">No. Telepon/HP</label>
+                              <div class="form-group">
+                                <input class="form-control" type="text" name="telepon" id="telepon" required>
+                              </div>
+                          </div>
     
                         <div class="col-12">
-                          <label for="email" class="form-label">Email</label>
+                          <label for="username" class="form-label">Username</label>
                           <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            <input type="text" name="email" class="form-control" id="email" required>
+                            <input type="text" name="username" class="form-control" id="username" required>
                           </div>
                         </div>
     

@@ -13,19 +13,20 @@ return new class extends Migration
     {
         Schema::create('anggotas', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_lengkap', 200)->required();
-            $table->string('tmp_lahir', 100)->required();
-            $table->date('tgl_lahir', 100)->required();
-            $table->string('sekolah', 150)->required();
-            $table->string('universitas', 150)->required();
-            $table->string('jurusan', 100)->required();
-            $table->string('fakultas', 100)->required();
-            $table->string('alamat', 200)->required();
-            $table->string('provinsi', 100)->required();
-            $table->string('kabupaten', 100)->required();
-            $table->string('kecamatan', 100)->required();
-            $table->string('telepon', 100)->required();
-            $table->string('gambar', 200)->required();
+            $table->string('name', 200);
+            $table->string('gender', 50)->nullable();
+            $table->string('tmp_lahir', 100)->nullable();
+            $table->date('tgl_lahir', 100)->nullable();
+            $table->string('sekolah', 150)->nullable();
+            $table->string('universitas', 150)->nullable();
+            $table->string('jurusan', 100)->nullable();
+            $table->string('fakultas', 100)->nullable();
+            $table->string('alamat', 200)->nullable();
+            $table->string('provinsi', 100)->nullable();
+            $table->string('kabupaten', 100)->nullable();
+            $table->string('kecamatan', 100)->nullable();
+            $table->string('telepon', 100)->nullable();
+            $table->string('gambar', 200)->nullable();
             $table->timestamps();
         });
     }

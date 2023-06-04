@@ -30,35 +30,35 @@ class AnggotaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $gambar = $request->file('gambar');
-        $gambar->store('mahasiswa-gambar', 'public');
+    // public function store(Request $request)
+    // {
+    //     $gambar = $request->file('gambar');
+    //     $gambar->store('mahasiswa-gambar', 'public');
 
-        $anggotas = Anggota::create([
-            'nm_lengkap' => $request->nm_lengkap,
-            'gender' => $request->gender,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'sekolah' => $request->sekolah,
-            'universitas' => $request->universitas,
-            'jurusan' => $request->jurusan,
-            'fakultas' => $request->fakultas,
-            'alamat' => $request->alamat,
-            'provinsi' => $request->provinsi,
-            'kabupaten' => $request->kabupaten,
-            'kecamatan' => $request->kecamatan,
-            'telepon' => $request->telepon,
-            'gambar' => $gambar->hashName()
-        ]);
+    //     $anggotas = Anggota::create([
+    //         'nm_lengkap' => $request->nm_lengkap,
+    //         'gender' => $request->gender,
+    //         'tmp_lahir' => $request->tmp_lahir,
+    //         'tgl_lahir' => $request->tgl_lahir,
+    //         'sekolah' => $request->sekolah,
+    //         'universitas' => $request->universitas,
+    //         'jurusan' => $request->jurusan,
+    //         'fakultas' => $request->fakultas,
+    //         'alamat' => $request->alamat,
+    //         'provinsi' => $request->provinsi,
+    //         'kabupaten' => $request->kabupaten,
+    //         'kecamatan' => $request->kecamatan,
+    //         'telepon' => $request->telepon,
+    //         'gambar' => $gambar->hashName()
+    //     ]);
 
-        if ($anggotas) {
-            Session::flash('tambah', 'success');
-            Session::flash('message', 'Data Berhasil Ditambahkan');
-        }
+    //     if ($anggotas) {
+    //         Session::flash('tambah', 'success');
+    //         Session::flash('message', 'Data Berhasil Ditambahkan');
+    //     }
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
     /**
      * Display the specified resource.
