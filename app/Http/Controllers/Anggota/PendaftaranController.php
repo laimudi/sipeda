@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Anggota;
 
-use App\Http\Controllers\Controller;
-use App\Models\Anggota;
+use App\Models\User;
 use App\Models\Pendaftar;
 use App\Models\Pendaftaran;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 class PendaftaranController extends Controller
@@ -17,10 +17,11 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota = $user->anggota;
         $pendaftar = Pendaftar::first();
-        $anggotas = Anggota::first();
         $daftar = Pendaftaran::first();
-        return view('anggota.pendaftaran', compact('daftar', 'anggotas', 'pendaftar'));
+        return view('anggota.pendaftaran', compact('daftar', 'anggota', 'pendaftar', 'user'));
     }
 
     /**
@@ -40,7 +41,7 @@ class PendaftaranController extends Controller
         $gambar->store('pendaftaran-gambar', 'public');
 
         $daftar = Pendaftaran::create([
-            'nm_lengkap' => $request->nm_lengkap,
+            'name' => $request->name,
             'gender' => $request->gender,
             'tmp_lahir' => $request->tmp_lahir,
             'tgl_lahir' => $request->tgl_lahir,

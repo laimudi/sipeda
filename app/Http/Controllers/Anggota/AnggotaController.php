@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Anggota;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -15,8 +16,9 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $anggotas = Anggota::first();
-        return view('anggota.anggota', compact('anggotas'));
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota = $user->anggota;
+        return view('anggota.anggota', compact('anggota', 'user'));
     }
 
     /**

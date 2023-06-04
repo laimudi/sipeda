@@ -10,7 +10,7 @@ class Pendaftaran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nm_lengkap',
+        'name',
         'gender',
         'tmp_lahir',
         'tgl_lahir',

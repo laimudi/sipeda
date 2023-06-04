@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_lengkap', 200)->required();
+            $table->string('name', 200)->required();
             $table->string('gender', 100)->required();
             $table->string('tmp_lahir', 100)->required();
             $table->date('tgl_lahir', 100)->required();

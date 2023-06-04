@@ -18,7 +18,7 @@
         <tr>
             <td>Nama Lengkap</td>
             <td>:</td>
-            <td>{{ $daftar->nm_lengkap }}</td>
+            <td>{{ $daftar->name }}</td>
         </tr>
         <tr>
             <td>Tampat, Tanggal Lahir</td>

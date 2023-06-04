@@ -15,10 +15,10 @@ class AnggotaSeede extends Seeder
     {
         $anggotas = [
             [
-                'name' => 'Mudi Admin'
+                'name' => 'Admin'
             ],
             [
-                'name' => 'Mudi Kepala'
+                'name' => 'Ketua Organisasi'
             ]
         ];
 

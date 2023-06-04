@@ -9,15 +9,15 @@
             @csrf
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="nm_lengkap">Nama Lengkap</label>
+                    <label for="name">Nama Lengkap</label>
                     <div class="form-group">
-                      <input class="form-control" type="text" name="nm_lengkap" id="nm_lengkap" value="{{ $anggotas->nm_lengkap }}" required>
+                      <input class="form-control" type="text" name="name" id="name" value="{{ $anggota->name }}" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="gender">Jenis Kelamin</label>
                     <select name="gender" id="gender" class="form-control">
-                      <option value="{{ $anggotas->gender }}">{{ $anggotas->gender }}</option>
+                      <option value="{{ $anggota->gender }}">{{ $anggota->gender }}</option>
                       <option value="Laki-Laki">Laki-Laki</option>
                       <option value="Perempuan">Perempuan</option>
                     </select>
@@ -25,13 +25,13 @@
                 <div class="mb-3">
                     <label for="tmp_lahir">Tempat Lahir</label>
                     <div class="form-group">
-                      <input class="form-control" type="text" name="tmp_lahir" id="tmp_lahir" value="{{ $anggotas->tmp_lahir }}" required>
+                      <input class="form-control" type="text" name="tmp_lahir" id="tmp_lahir" value="{{ $anggota->tmp_lahir }}" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="tgl_lahir">Tanggal Lahir</label>
                     <div class="form-group">
-                      <input class="form-control" type="date" id="tgl_lahir" name="tgl_lahir" value="{{ $anggotas->tgl_lahir }}" required>
+                      <input class="form-control" type="date" id="tgl_lahir" name="tgl_lahir" value="{{ $anggota->tgl_lahir }}" required>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -43,7 +43,7 @@
                 <div class="mb-3">
                     <label for="alamat">Alamat</label>
                     <div class="form-group">
-                      <input class="form-control" type="text" name="alamat" id="alamat" value="{{ $anggotas->alamat }}" required>
+                      <input class="form-control" type="text" name="alamat" id="alamat" value="{{ $anggota->alamat }}" required>
                     </div>
                 </div>
                 <div class="mb-3">

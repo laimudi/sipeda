@@ -32,9 +32,9 @@
       <div class="col-xl-4">
         <div class="card">
           <div class="card-body shadow profile-card pt-4 d-flex flex-column align-items-center">
-            @if ($anggotas != null)
-            <img src="{{ asset('storage/mahasiswa-gambar/'. $anggotas->gambar) }}" alt="Profile" class="rounded-circle">
-            <h2>{{ $anggotas->nm_lengkap }}</h2>
+            @if ($anggota != null)
+            <img src="{{ asset('storage/mahasiswa-gambar/'. $anggota->gambar) }}" alt="Profile" class="rounded-circle">
+            <h2>{{ $anggota->name }}</h2>
             @endif
           </div>
         </div>
@@ -47,80 +47,72 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                              @if ($anggotas == null)
-                              <button type="button" class="btn btn-outline-primary"
-                                    data-bs-toggle="modal" data-bs-target="#tambahAnggota">
-                                    Tambah Profil
-                              </button>
-                              @include('anggota.modal_anggota_tambah')
-                              @else
                               <button type="button" class="btn btn-outline-warning"
                                     data-bs-toggle="modal" data-bs-target="#editAnggota">
                                     Edit Profil
                               </button>
                               @include('anggota.modal_anggota_edit')
-                              @endif
                             </li>
                         </ol>
                     </nav>
                 </div>
             </div>
           <div class="card-body shadow pt-3">
-            @if ($anggotas != null)
+            @if ($anggota != null)
             <div class="tab-content pt-2">
               <div class="tab-pane fade show active profile-overview" id="profile-overview">
                 <h5 class="card-title">Profile Details</h5>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Nama Lengkap</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->nm_lengkap }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->name }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->gender }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->gender }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->tmp_lahir }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->tmp_lahir }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->tgl_lahir }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->tgl_lahir }}</strong></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-4 label">Asal Sekolah</div>
-                    <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->sekolah }}</strong></div>
+                    <div class="col-lg-9 col-md-8"><strong>{{ $anggota->sekolah }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Universitas</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->universitas }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->universitas }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Jurusan</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->jurusan }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->jurusan }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Fakultas</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->fakultas }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->fakultas }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Alamat</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->alamat }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->alamat }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Provinsi</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->provinsi }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->provinsi }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Kabupaten/Kota</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->kabupaten }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->kabupaten }}</strong></div>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Asal Kecamatan/Desa</div>
-                  <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->kecamatan }}</strong></div>
+                  <div class="col-lg-9 col-md-8"><strong>{{ $anggota->kecamatan }}</strong></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-4 label">No. Telepon/HP</div>
-                    <div class="col-lg-9 col-md-8"><strong>{{ $anggotas->telepon }}</strong></div>
+                    <div class="col-lg-9 col-md-8"><strong>{{ $anggota->telepon }}</strong></div>
                   </div>
               </div>
             </div>
