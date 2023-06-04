@@ -10,7 +10,7 @@ class Pendaftaran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'anggota_id',
         'gender',
         'tmp_lahir',
         'tgl_lahir',
@@ -20,6 +20,11 @@ class Pendaftaran extends Model
         'telepon_ortu',
         'gambar'
     ];
+
+    public function anggota()
+    {
+        return $this->belongsTo(Anggota::class);
+    }
 
     protected $table = 'pendaftarans';
 }

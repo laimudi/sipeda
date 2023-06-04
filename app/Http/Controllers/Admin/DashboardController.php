@@ -10,7 +10,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = User::where('id', auth()->user()->id);
-        return view('admin.dashboard', compact('user'));
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota = $user->anggota;
+        // $user = User::where('id', auth()->user()->id);
+        return view('admin.dashboard', compact('user', 'anggota'));
     }
 }

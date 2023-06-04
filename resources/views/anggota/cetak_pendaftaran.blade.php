@@ -18,37 +18,37 @@
         <tr>
             <td>Nama Lengkap</td>
             <td>:</td>
-            <td>{{ $daftar->name }}</td>
+            <td>{{ $anggota->name }}</td>
         </tr>
         <tr>
             <td>Tampat, Tanggal Lahir</td>
             <td>:</td>
-            <td>{{ $daftar->tmp_lahir }}, {{ $daftar->tgl_lahir }}</td>
+            <td>{{ $anggota->pendaftaran->tmp_lahir }}, {{ $anggota->pendaftaran->tgl_lahir }}</td>
         </tr>
         <tr>
             <td>Jenis Kelamin</td>
             <td>:</td>
-            <td>{{ $daftar->gender }}</td>
+            <td>{{ $anggota->pendaftaran->gender }}</td>
         </tr>
         <tr>
             <td>Agama</td>
             <td>:</td>
-            <td>{{ $daftar->agama }}</td>
+            <td>{{ $anggota->pendaftaran->agama }}</td>
         </tr>
         <tr>
             <td>Alamat</td>
             <td>:</td>
-            <td>{{ $daftar->alamat }}</td>
+            <td>{{ $anggota->alamat }}</td>
         </tr>
         <tr>
             <td>Riwayat Penyakit</td>
             <td>:</td>
-            <td>{{ $daftar->penyakit }}</td>
+            <td>{{ $anggota->pendaftaran->penyakit }}</td>
         </tr>
         <tr>
             <td>No. Telepon/HP Orang Tua</td>
             <td>:</td>
-            <td>{{ $daftar->telepon_ortu }}</td>
+            <td>{{ $anggota->pendaftaran->telepon_ortu }}</td>
         </tr>
     </table>
     <br>
@@ -63,7 +63,7 @@
     <table>
         <tr>
         <td width="300"></td>
-        <p align="center" width="200">Gorontalo, {{ \Carbon\Carbon::now()->format('d M Y') }} <br>Mengetahui <br><br><br><br><strong><u>{{ $daftar->nm_lengkap }}</u></strong></p>
+        <p align="center" width="200">Gorontalo, {{ \Carbon\Carbon::now()->format('d M Y') }} <br>Mengetahui <br><br><br><br><strong><u>{{ $anggota->name }}</u></strong></p>
         </tr>
     </table>
 </body>

@@ -86,7 +86,7 @@ class AnggotaController extends Controller
         $anggotas = Anggota::findOrFail($id);
         if ($request->file('gambar') == "") {
             $anggotas->update([
-                'nm_lengkap' => $request->nm_lengkap,
+                'name' => $request->name,
                 'gender' => $request->gender,
                 'tmp_lahir' => $request->tmp_lahir,
                 'tgl_lahir' => $request->tgl_lahir,
@@ -113,7 +113,7 @@ class AnggotaController extends Controller
             $gambar->storeAs('public/mahasiswa-gambar', $gambar->hashName());
 
             $anggotas->update([
-                'nm_lengkap' => $request->nm_lengkap,
+                'name' => $request->name,
                 'gender' => $request->gender,
                 'tmp_lahir' => $request->tmp_lahir,
                 'tgl_lahir' => $request->tgl_lahir,

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200)->required();
-            $table->string('gender', 100)->required();
-            $table->string('tmp_lahir', 100)->required();
-            $table->date('tgl_lahir', 100)->required();
-            $table->string('agama', 100)->required();
-            $table->string('alamat', 200)->required();
-            $table->string('penyakit', 100)->required();
-            $table->string('telepon_ortu', 100)->required();
-            $table->string('gambar', 200)->required();
+            $table->foreignId('anggota_id')->constrained();
+            $table->string('gender', 100)->nullable();
+            $table->string('tmp_lahir', 100)->nullable();
+            $table->date('tgl_lahir', 100)->nullable();
+            $table->string('agama', 100)->nullable();
+            $table->string('alamat', 200)->nullable();
+            $table->string('penyakit', 100)->nullable();
+            $table->string('telepon_ortu', 100)->nullable();
+            $table->string('gambar', 200)->nullable();
             $table->timestamps();
         });
     }

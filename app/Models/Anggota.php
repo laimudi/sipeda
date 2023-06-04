@@ -30,4 +30,9 @@ class Anggota extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function pendaftaran()
+    {
+        return $this->hasOne(Pendaftaran::class);
+    }
 }

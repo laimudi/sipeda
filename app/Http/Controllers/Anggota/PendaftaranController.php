@@ -8,7 +8,9 @@ use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use App\Models\Anggota;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class PendaftaranController extends Controller
 {
@@ -19,9 +21,9 @@ class PendaftaranController extends Controller
     {
         $user = User::where('id', auth()->user()->id)->first();
         $anggota = $user->anggota;
-        $pendaftar = Pendaftar::first();
-        $daftar = Pendaftaran::first();
-        return view('anggota.pendaftaran', compact('daftar', 'anggota', 'pendaftar', 'user'));
+        // $pendaftar = Pendaftar::first();
+        // $daftar = Pendaftaran::first();
+        return view('anggota.pendaftaran', compact('anggota', 'user'));
     }
 
     /**
@@ -37,16 +39,16 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota_id = $user->anggota->id;
+
         $gambar = $request->file('gambar');
         $gambar->store('pendaftaran-gambar', 'public');
 
         $daftar = Pendaftaran::create([
-            'name' => $request->name,
-            'gender' => $request->gender,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
+            'anggota_id' => $anggota_id,
             'agama' => $request->agama,
-            'alamat' => $request->alamat,
             'penyakit' => $request->penyakit,
             'telepon_ortu' => $request->telepon_ortu,
             'gambar' => $gambar->hashName()
@@ -81,7 +83,54 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($id);
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota_id = $user->anggota->id;
+
+        // tabel pendaftaran itu create dp nama
+        // karena nga m b simpan data di tabel pendaftaran
+        // bukan b ubah data dari suatu tabel
+        $daftar = Pendaftaran::findOrFail($id);
+        if ($request->file('gambar') == "") {
+            $daftar->update([
+                'anggota_id' => $request->anggota_id,
+                'gender' => $request->gender,
+                'tmp_lahir' => $request->tmp_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat,
+                'penyakit' => $request->penyakit,
+                'telepon_ortu' => $request->telepon_ortu
+            ]);
+        } else {
+            $file = public_path('storage/pendaftaran-gambar') . $daftar->gambar;
+            if (file_exists($file)) {
+                @unlink($file);
+            }
+            Storage::delete($file);
+        }
+        // Ganti dengan data baru
+        $gambar = $request->file('gambar');
+        $gambar->storeAs('public/pendaftaran-gambar', $gambar->hashName());
+
+        $daftar->update([
+            'anggota_id' => $request->anggota_id,
+            'gender' => $request->gender,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'penyakit' => $request->penyakit,
+            'telepon_ortu' => $request->telepon_ortu,
+            'gambar' => $gambar->hashName()
+        ]);
+
+        if ($daftar) {
+            Session::flash('edit', 'success');
+            Session::flash('message', 'Data Berhasil Diedit');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -94,9 +143,11 @@ class PendaftaranController extends Controller
 
     public function cetakFormulir($id)
     {
-        $pendaftar = Pendaftar::findOrFail($id);
-        $daftar = Pendaftaran::findOrFail($id);
-        $pdf = Pdf::loadView('anggota.cetak_pendaftaran', compact('daftar', 'pendaftar'));
-        return $pdf->download('Formulir-Pendaftaran-OPN.pdf');
+
+        $pendaftar = Pendaftar::first();
+        // $daftar = Pendaftaran::findOrFail($id);
+        $anggota = Anggota::findOrFail($id);
+        $pdf = Pdf::loadView('anggota.cetak_pendaftaran', compact('anggota', 'pendaftar'));
+        return $pdf->stream('Formulir-Pendaftaran-OPN.pdf');
     }
 }

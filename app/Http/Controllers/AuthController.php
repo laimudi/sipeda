@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anggota;
 use App\Models\User;
+use App\Models\Anggota;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -95,9 +96,19 @@ class AuthController extends Controller
             'password' => Hash::make($request['password']),
             'anggota_id' => $anggota->id
         ]);
-
         // dd($users->anggota);
         // dd($anggota->user);
+
+        // Pendaftaran::create([
+        //     'anggota_id' => $anggota->id,
+        //     'gender' => $request->gender,
+        //     'tmp_lahir' => $request->tmp_lahir,
+        //     'tgl_lahir' => $request->tgl_lahir,
+        //     'agama' => $request->agama,
+        //     'alamat' => $request->alamat,
+        //     'penyakit' => $request->penyakit,
+        //     'telepon_ortu' => $request->telepon_ortu,
+        // ]);
 
         Auth::login($users);
 
