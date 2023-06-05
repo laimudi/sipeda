@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Pendaftaran;
 
 class MahasiswaController extends Controller
 {
@@ -13,8 +15,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $anggotas = Anggota::first();
-        return view('admin.mahasiswa.mahasiswa', compact('anggotas'));
+        $user = User::where('id', auth()->user()->id)->first();
+        $anggota = $user->anggota;
+        $pendaftaran = Pendaftaran::all();
+        return view('admin.mahasiswa.mahasiswa', compact('pendaftaran'));
     }
 
     /**

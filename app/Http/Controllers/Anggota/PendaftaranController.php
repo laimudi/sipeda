@@ -48,7 +48,15 @@ class PendaftaranController extends Controller
 
         $daftar = Pendaftaran::create([
             'anggota_id' => $anggota_id,
+            'nm_lengkap' => $anggota_id,
+            'gender' => $request->gender,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'universitas' => $request->universitas,
+            'jurusan' => $request->jurusan,
+            'kecamatan' => $request->kecamatan,
             'agama' => $request->agama,
+            'alamat' => $request->alamat,
             'penyakit' => $request->penyakit,
             'telepon_ortu' => $request->telepon_ortu,
             'gambar' => $gambar->hashName()

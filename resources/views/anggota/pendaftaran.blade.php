@@ -36,7 +36,7 @@
           <div class="card-body shadow profile-card pt-4 d-flex flex-column align-items-center">
             @if ($anggota->pendaftaran !== null)
             <img src="{{ asset('storage/pendaftaran-gambar/'. $user->anggota->pendaftaran->gambar) }}" alt="Profile" class="rounded-circle" width="200" height="200">
-            <h2>{{ $user->anggota->name; }}</h2>
+            <h2>{{ $user->anggota->name }}</h2>
             @endif
           </div>
         </div>
@@ -49,14 +49,17 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
+                              @if ($anggota->pendaftaran == null)
                               <button type="button" class="btn btn-outline-primary"
-                                    data-bs-toggle="modal" data-bs-target="#tambahPendaftaran">
-                                    Daftar
+                                  data-bs-toggle="modal" data-bs-target="#tambahPendaftaran">
+                                  Daftar
                               </button>
                               @include('anggota.modal_pendaftaran_tambah')
+                              @else
                               <a class="btn btn-outline-danger" data-placement="top" href="{{ route('cetak.formulir', $anggota->id) }}" target="_blank">
                                 <i class="bi bi-file-earmark-pdf-fill">Cetak Formulir</i>
-                              </a>
+                              </a>   
+                              @endif
                             </li>
                         </ol>
                     </nav>
@@ -66,29 +69,38 @@
                 <div class="tab-content pt-2">
                   <div class="tab-pane fade show active profile-overview" id="profile-overview">
                     <h5 class="card-title">Pendaftaran</h5>
-                    <div class="row">
-                      <div class="col-lg-3 col-md-4 label">Nama Lengkap</div>
-                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->name }}</strong></div>
-                    </div>
+                    @if ($anggota->pendaftaran !== null)
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
-                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->gender }}</strong></div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->gender }}</strong></div>
                     </div>
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Tempat Lahir</div>
-                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->tmp_lahir }}</strong></div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->tmp_lahir }}</strong></div>
                     </div>
                     <div class="row">
                       <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->tgl_lahir }}</strong></div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->tgl_lahir }}</strong></div>
                     </div>
                     <div class="row">
                         <div class="col-lg-3 col-md-4 label">Agama</div>
                         <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->agama ?? '' }}</strong></div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Alamat</div>
-                        <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->alamat }}</strong></div>
+                      <div class="col-lg-3 col-md-4 label">Universitas</div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->universitas }}</strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Jurusan</div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->jurusan }}</strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Kecamatan</div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->kecamatan }}</strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Alamat</div>
+                      <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->alamat }}</strong></div>
                     </div>
                     <div class="row"> 
                         <div class="col-lg-3 col-md-4 label">Riwayat Penyakit</div>
@@ -98,6 +110,7 @@
                           <div class="col-lg-3 col-md-4 label">No. Telepon/HP Orang Tua</div>
                           <div class="col-lg-9 col-md-8"><strong>{{ $user->anggota->pendaftaran->telepon_ortu ?? '' }}</strong></div>
                     </div>
+                    @endif
                   </div>
                 </div>
               </div>

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('gender', 100)->nullable();
             $table->string('tmp_lahir', 100)->nullable();
             $table->date('tgl_lahir', 100)->nullable();
+            $table->string('universitas', 150)->nullable();
+            $table->string('jurusan', 100)->nullable();
+            $table->string('kecamatan', 100)->nullable();
             $table->string('agama', 100)->nullable();
             $table->string('alamat', 200)->nullable();
             $table->string('penyakit', 100)->nullable();

@@ -9,10 +9,58 @@
             @csrf
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="agama">Agama</label>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="agama" id="agama" required>
-                    </div>
+                  <label>Nama Lengkap</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" value="{{ $user->anggota->name }}">
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="gender">Gender</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="gender" id="gender"  value="{{ $user->anggota->gender }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="tmp_lahir">Tempat Lahir</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="tmp_lahir" id="tmp_lahir"  value="{{ $user->anggota->tmp_lahir }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="tgl_lahir">Tanggal Lahir</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="tgl_lahir" id="tgl_lahir"  value="{{ $user->anggota->tgl_lahir }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="agama">Agama</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="agama" id="agama" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="universitas">Universitas</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="universitas" id="universitas" value="{{ $anggota->universitas }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="jurusan">Jurusan</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="jurusan" id="jurusan" value="{{ $anggota->jurusan }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat">Alamat</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="alamat" id="alamat"  value="{{ $user->anggota->alamat }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="kecamatan">Kecamatan/Desa</label>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="kecamatan" id="kecamatan" value="{{ $anggota->kecamatan }}" required>
+                  </div>
                 </div>
                 <div class="mb-3">
                     <label for="penyakit">Riwayat Penyakit</label>

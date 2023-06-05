@@ -22,7 +22,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><button type="button" class="btn btn-outline-danger"
                                 data-bs-toggle="modal" data-bs-target="#tambahBerita">
-                                Cetak PDF
+                                Cetak Data
                             </button></li>
                     </ol>
                 </nav>
@@ -43,14 +43,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($pendaftaran as $pendaftar)
                         <tr>
-                            <th></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $pendaftar->anggota->name }}</td>
+                            <td>{{ $pendaftar->universitas }}/{{ $pendaftar->jurusan }}</td>
+                            <td>{{ $pendaftar->kecamatan }}/{{ $pendaftar->alamat }}</td>
                             <td></td>
                             <td></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
