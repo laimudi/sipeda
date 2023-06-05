@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Anggota;
 
 use App\Models\User;
-use App\Models\Pendaftar;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
+use App\Models\TextFormulir;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -152,10 +152,10 @@ class PendaftaranController extends Controller
     public function cetakFormulir($id)
     {
 
-        $pendaftar = Pendaftar::first();
+        $textfor = TextFormulir::first();
         // $daftar = Pendaftaran::findOrFail($id);
         $anggota = Anggota::findOrFail($id);
-        $pdf = Pdf::loadView('anggota.cetak_pendaftaran', compact('anggota', 'pendaftar'));
+        $pdf = Pdf::loadView('anggota.cetak_pendaftaran', compact('anggota', 'textfor'));
         return $pdf->stream('Formulir-Pendaftaran-OPN.pdf');
     }
 }

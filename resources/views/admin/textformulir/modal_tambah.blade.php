@@ -1,11 +1,11 @@
-<div class="modal fade" id="tambahPendaftar" tabindex="-1" aria-labelledby="modalTambahPendaftar" aria-hidden="true">
+<div class="modal fade" id="tambahTextFor" tabindex="-1" aria-labelledby="modalTambahTextFor" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTambahPendaftar">Text Formulir</h5>
+          <h5 class="modal-title" id="modalTambahTextFor">Text Formulir</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('pendaftar.store') }}" method="POST">
+        <form action="{{ route('textfor.store') }}" method="POST">
             @csrf
             <div class="modal-body">
                 <div class="mb-3">

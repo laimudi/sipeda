@@ -31,9 +31,9 @@
   </li>
 
   <li class="nav-item">
-    <a href="{{ route('pendaftar.index') }}" class="nav-link {{ Request::is('pendaftar') ? 'collapsed' : '' }}">
+    <a href="{{ route('textfor.index') }}" class="nav-link {{ Request::is('textfor') ? 'collapsed' : '' }}">
       <i class="bi bi-people-fill"></i>
-      <span>Daftar Pendaftar</span>
+      <span>Text Formulir</span>
     </a>
   </li>
 
@@ -113,21 +113,14 @@
   <li class="nav-heading">Pages</li>
 
   <li class="nav-item">
-    <a href="{{ route('profilee.index') }}" class="nav-link {{ Request::is('profilee') ? 'collapsed' : '' }}">
-      <i class="bi bi-person"></i>
-      <span>Profil</span>
-    </a>
-  </li>
-
-  <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{ route('daftarPrs.index') }}" class="nav-link {{ Request::is('daftaPrs') ? 'collapsed' : '' }}">
       <i class="bi bi-people-fill"></i>
       <span>Data Pengurus</span>
     </a>
   </li>
 
   <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{ route('daftarmhs.index') }}" class="nav-link {{ Request::is('daftarmhs') ? 'collapsed' : '' }}">
       <i class="bi bi-people-fill"></i>
       <span>Data Mahasiswa</span>
     </a>

@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\ketua_org;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
-class ProfileeController extends Controller
+class DaftarPengurusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('ketua-org.profilee');
+        $bidangs = Bidang::all();
+        $pengurus = Pengurus::all();
+        return view('ketua-org.daftar_pengurus', compact('pengurus', 'bidangs'));
     }
 
     /**

@@ -54,7 +54,7 @@
     <br>
     <table>
         <div class="d-flex justify-content">
-            <p>{{ $pendaftar->text_formulir }}</p>
+            <p>{{ $textfor->text_formulir }}</p>
         </div>
     </table>
     <table>

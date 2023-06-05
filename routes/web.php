@@ -4,16 +4,16 @@ use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\BeritaController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\BidangController;
-use App\Http\Controllers\Admin\PendaftarController;
 use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\PengurusController;
+use App\Http\Controllers\Admin\TextFormulirController;
 use App\Http\Controllers\Anggota\AnggotaController;
 use App\Http\Controllers\Anggota\PendaftaranController;
-use App\Http\Controllers\ketua_org\ProfileeController;
+use App\Http\Controllers\ketua_org\DaftarMhsController;
+use App\Http\Controllers\ketua_org\DaftarPengurusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/mahasiswa', MahasiswaController::class);
         Route::resource('/pengumuman', PengumumanController::class);
         Route::resource('/agenda', AgendaController::class);
-        Route::resource('/pendaftar', PendaftarController::class);
+        Route::resource('/textfor', TextFormulirController::class);
         // });
     });
 
@@ -81,7 +81,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Ketua-Org
     Route::group(['middleware' => ['role:ketua_org'], 'prefix' => 'ketua_org'], function () {
         Route::get('/', [App\Http\Controllers\ketua_org\DashboardController::class, 'index'])->name('ketua-org.dashboard');
-        Route::resource('/profilee', ProfileeController::class);
+        Route::resource('/daftarPrs', DaftarPengurusController::class);
+        Route::resource('/daftarmhs', DaftarMhsController::class);
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

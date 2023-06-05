@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendaftars', function (Blueprint $table) {
+        Schema::create('text_formulirs', function (Blueprint $table) {
             $table->id();
             $table->longText('text_formulir')->required();
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pendaftars');
+        Schema::dropIfExists('text_formulirs');
     }
 };

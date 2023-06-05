@@ -1,15 +1,15 @@
 @extends('layouts.partials.mainLayout')
 
-@section('title', 'Admin | Pendaftar')
+@section('title', 'Admin | Text Formulir')
 
 @section('content')
 
 <div class="pagetitle">
-    <h1>Pendaftar</h1>
+    <h1>Text Formulir</h1>
     <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Pendaftar</li>
+        <li class="breadcrumb-item active">Text Formulir</li>
     </ol>
     </nav>
 </div>
@@ -34,18 +34,18 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                              @if ($pendaftar == null)
+                              @if ($textfor == null)
                               <button type="button" class="btn btn-outline-primary"
-                                    data-bs-toggle="modal" data-bs-target="#tambahPendaftar">
+                                    data-bs-toggle="modal" data-bs-target="#tambahTextFor">
                                     Text Formulir
                               </button>
-                              @include('admin.pendaftar.modal_tambah')
+                              @include('admin.textformulir.modal_tambah')
                               @else
                               <button type="button" class="btn btn-outline-warning"
-                                    data-bs-toggle="modal" data-bs-target="#editPendaftar">
+                                    data-bs-toggle="modal" data-bs-target="#editTextFor">
                                     Edit Text Formulir
                               </button>
-                              @include('admin.pendaftar.modal_edit')
+                              @include('admin.textformulir.modal_edit')
                               @endif
                             </li>
                         </ol>
@@ -54,9 +54,9 @@
             </div>
             <div class="card-body shadow pt-3">
               <div class="tab-content pt-2">
-                @if ($pendaftar != null)
+                @if ($textfor != null)
                 <div class="d-flex justify-content">
-                  <p>{!! nl2br($pendaftar->text_formulir) !!}</p>
+                  <p>{!! nl2br($textfor->text_formulir) !!}</p>
                 </div>
                 @endif
               </div>

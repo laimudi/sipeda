@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\ketua_org;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pendaftar;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Psy\CodeCleaner\ReturnTypePass;
 
-class PendaftarController extends Controller
+class DaftarMhsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pendaftar = Pendaftar::first();
-        return view('admin.pendaftar.pendaftar', compact('pendaftar'));
+        $pendaftaran = Pendaftaran::all();
+        return view('ketua-org.daftar_mahasiswa', compact('pendaftaran'));
     }
 
     /**
@@ -32,14 +30,7 @@ class PendaftarController extends Controller
      */
     public function store(Request $request)
     {
-        $pendaftar = Pendaftar::create($request->all());
-
-        if ($pendaftar) {
-            Session::flash('tambah', 'success');
-            Session::flash('message', 'Data Berhasil Ditambahkan');
-        }
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -63,15 +54,7 @@ class PendaftarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pendaftar = Pendaftar::findOrFail($id);
-        $pendaftar->update($request->all());
-
-        if ($pendaftar) {
-            Session::flash('edit', 'success');
-            Session::flash('message', 'Data Berhasil Diedit');
-        }
-
-        return redirect()->back();
+        //
     }
 
     /**
