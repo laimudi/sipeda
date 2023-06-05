@@ -37,7 +37,7 @@
                             Tambah Bidang
                         </button></li>
                 </ol>
-                @include('admin.bidang.modal_tambah');
+                @include('admin.bidang.modal_tambah')
             </nav>
         </div>
       </div>

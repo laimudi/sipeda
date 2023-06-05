@@ -26,7 +26,7 @@
         <div class="col-lg-8 pt-4 pt-lg-0 mt-5">
           <h3>Keluarga Mahasiswa Indonesia Banggai Laut (KMI-BALUT) Provinsi Gorontalo</h3>
           @if ($profil != null)
-          <h5 class="mt-5">{!!  nl2br($profil->tentang) !!}</h5>
+          <h5 class="mt-5 justify-content">{!!  nl2br($profil->tentang) !!}</h5>
           @endif
         </div>
       </div>
