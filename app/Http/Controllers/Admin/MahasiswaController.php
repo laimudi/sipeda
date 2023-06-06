@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Models\Anggota;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Pendaftaran;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class MahasiswaController extends Controller
 {
@@ -58,7 +59,17 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pendaftaran = Pendaftaran::findOrFail($id);
+        $pendaftaran->update([
+            'status' => $request->status
+        ]);
+
+        if ($pendaftaran) {
+            Session::flash('edit', 'success');
+            Session::flash('message', 'Data Berhasil Diedit');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -67,5 +78,12 @@ class MahasiswaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function cetakPdf()
+    {
+        $pendaftaran = Pendaftaran::all();
+        $pdf = Pdf::loadView('admin.mahasiswa.cetak_pdf', compact('pendaftaran'));
+        return $pdf->stream('Daftar-Mahasiswa.pdf');
     }
 }

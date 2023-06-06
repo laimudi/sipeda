@@ -63,6 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/pengumuman', PengumumanController::class);
         Route::resource('/agenda', AgendaController::class);
         Route::resource('/textfor', TextFormulirController::class);
+
+        // Cetak Mahasiswa
+        Route::get('/admin/mahasiswa/cetak', [MahasiswaController::class, 'cetakPdf'])->name('cetak.pdf');
+
         // });
     });
 

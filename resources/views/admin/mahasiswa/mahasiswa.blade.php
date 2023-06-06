@@ -20,10 +20,11 @@
             <div class="col-12 col-md-12 order-md-12 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><button type="button" class="btn btn-outline-danger"
-                                data-bs-toggle="modal" data-bs-target="#tambahBerita">
-                                Cetak Data
-                            </button></li>
+                        <li class="breadcrumb-item">
+                            <a class="btn btn-outline-danger" data-placement="top" href="{{ route('cetak.pdf') }}" target="_blank">
+                                <i class="bi bi-file-earmark-pdf-fill">Cetak PDF</i>
+                            </a>
+                        </li>
                     </ol>
                 </nav>
             </div>
@@ -49,9 +50,14 @@
                             <td>{{ $pendaftar->anggota->name }}</td>
                             <td>{{ $pendaftar->universitas }}/{{ $pendaftar->jurusan }}</td>
                             <td>{{ $pendaftar->kecamatan }}/{{ $pendaftar->alamat }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $pendaftar->status }}</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal"data-bs-target="#editMahasiswa-{{$pendaftar->id}}">
+                                    <i class="ri-edit-box-line"></i>
+                                </button>
+                            </td>
                         </tr>
+                        @include('admin.mahasiswa.modal_mahasiswa_edit')
                         @endforeach
                     </tbody>
                 </table>

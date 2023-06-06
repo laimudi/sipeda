@@ -59,7 +59,8 @@ class PendaftaranController extends Controller
             'alamat' => $request->alamat,
             'penyakit' => $request->penyakit,
             'telepon_ortu' => $request->telepon_ortu,
-            'gambar' => $gambar->hashName()
+            'gambar' => $gambar->hashName(),
+            'status' => $request->status
         ]);
 
         if ($daftar) {

@@ -11,6 +11,7 @@
                 <div class="mb-3">
                   <label>Nama Lengkap</label>
                   <div class="form-group">
+                    <input type="hidden" class="form-control" name="status" id="status" value="Sedang di proses">
                     <input class="form-control" type="text" value="{{ $user->anggota->name }}">
                   </div>
                 </div>

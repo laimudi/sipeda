@@ -21,7 +21,8 @@ class Pendaftaran extends Model
         'alamat',
         'penyakit',
         'telepon_ortu',
-        'gambar'
+        'gambar',
+        'status'
     ];
 
     public function anggota()

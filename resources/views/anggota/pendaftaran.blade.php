@@ -37,11 +37,11 @@
             @if ($anggota->pendaftaran !== null)
             <img src="{{ asset('storage/pendaftaran-gambar/'. $user->anggota->pendaftaran->gambar) }}" alt="Profile" class="rounded-circle" width="200" height="200">
             <h2>{{ $user->anggota->name }}</h2>
+            <h6>Status Keanggotaan: {{ $user->anggota->pendaftaran->status }}</h6>
             @endif
           </div>
         </div>
     </div>
-
     <div class="col-xl-8">
         <div class="card">
             <div class="card-header">

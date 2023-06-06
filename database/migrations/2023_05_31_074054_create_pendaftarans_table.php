@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('penyakit', 100)->nullable();
             $table->string('telepon_ortu', 100)->nullable();
             $table->string('gambar', 200)->nullable();
+            $table->string('status', 100)->nullable();
             $table->timestamps();
         });
     }
