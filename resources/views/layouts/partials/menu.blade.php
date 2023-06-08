@@ -32,7 +32,7 @@
 
   <li class="nav-item">
     <a href="{{ route('textfor.index') }}" class="nav-link {{ Request::is('textfor') ? 'collapsed' : '' }}">
-      <i class="bi bi-people-fill"></i>
+      <i class="bi bi-exclamation-circle"></i>
       <span>Text Formulir</span>
     </a>
   </li>

@@ -50,7 +50,6 @@
                 <h2>Sejarah KMI-BALUT</h2>
             </div>
           <div class="row">
-            {{-- <div class="col-lg-8 pt-4 pt-lg-0"> --}}
             <div class="d-flex justify-center">
             @if ($profil != null)
               <h5 class="mt-5" style="text-align: justify">{!! nl2br($profil->sejarah) !!}</h5>
